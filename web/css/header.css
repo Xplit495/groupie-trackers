@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap');
+
+* {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #4b4b4b;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    background-color: #152d45;
+    width: 100%;
+}
+
+#logo {
+    height: 125px;
+    margin-right: 80%;
+    margin-top: -2%;
+}
+
+
+nav {
+    width: 100%;
+    margin-bottom: 2%;
+    margin-top: 3%;
+}
+
+nav ul {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+a:link, a:visited {
+    color: #b79140;
+    text-decoration: none;
+}
+
+a:hover, a:active {
+    color: #6e5629;
+    text-decoration: underline;
+}
+
+#search-box {
+    text-align: center;
+    width: 50%;
+    margin-top: -4.7%;
+}
+
+#search-input {
+    color: #152d45;
+    width: 50%;
+    padding: 10px;
+    margin-right: -5px;
+}
+
+#search-box button {
+    padding: 11.3px;
+    background-color: #b79140;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#search-box button:hover {
+    background-color: #6e5629;
+}
+
+#suggestions {
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    border-top: none;
+    position: absolute;
+    width: 50%;
+    text-align: left;
+}
+
+#suggestions div {
+    padding: 10px;
+    cursor: pointer;
+}
+
+#suggestions div:hover {
+    background-color: #eee;
+}

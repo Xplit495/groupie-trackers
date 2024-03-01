@@ -1,0 +1,38 @@
+.cards-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: -10px;
+}
+
+.card-container {
+    flex: 0 0 32%;
+    box-sizing: border-box;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ccc;
+}
+
+.card-image {
+    width: 100%;
+    height: 150px;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    color: red;
+}
+
+.card-content {
+    padding: 15px;
+    text-align: center;
+    border-top: 1px solid #ccc;
+    background-color: #fff;
+}
+
+.artist-name {
+    font-size: 18px;
+    color: blue;
+}
