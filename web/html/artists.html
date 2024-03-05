@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <title>Sinfonia</title>
     <link rel="icon" href="../resourcesWeb/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="../css/gallery.css">
+    <link rel="stylesheet" href="../css/artists.css">
     <link rel="stylesheet" href="../css/header.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
@@ -31,20 +32,18 @@
     </nav>
 </header>
 
-<div class="cards-grid">
-    {{range .}}
-    <div class="card-container">
-        <a href="artists.html?id={{.ID}}">
-        <div class="card-image">
-            <img src="{{.Image}}" alt="Photo de {{.Name}}">
-        </div>
-        <div class="artist-line"></div>
-        <div class="card-content">
-            <p class="artist-name">{{.Name}}</p>
-        </div>
-        </a>
+<div class="artist-details">
+
+    <div class="artist-image">
+        <h2>Pochette de l'album</h2>
+        <img src="{{.Image}}" alt="Photo de {{.Name}}" />
     </div>
-    {{end}}
+
+    <h2 class="artist-name">Nom du groupe : {{.Name}}</h2>
+    <h1 class="members">Membres : {{.MemberBis}}</h1>
+    <h1 class="creationDate">Date de création : {{.CreationDate}}</h1>
+    <h1 class="firstAlbum">Sortie du premier album : {{.FirstAlbum}}</h1>
+
 </div>
 
 </body>

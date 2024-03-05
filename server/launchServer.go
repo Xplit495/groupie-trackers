@@ -6,6 +6,8 @@ import (
 	"html/template"
 	"net/http"
 	"path/filepath"
+	"strconv"
+	"strings"
 )
 
 type Artist struct {
@@ -38,6 +40,27 @@ func LaunchServer() {
 		err1 := tmpl.Execute(writer, artists)
 		if err1 != nil {
 			return
+		}
+	})
+
+	http.HandleFunc("/artists.html", func(writer http.ResponseWriter, request *http.Request) {
+		artistIDStr := request.URL.Query().Get("id")
+		artistID, err := strconv.Atoi(artistIDStr)
+		if err != nil {
+			http.Error(writer, "Invalid artist ID", http.StatusBadRequest)
+			return
+		}
+
+		artist, err := utils.FetchArtistDetails(artistID)
+		if err != nil {
+			http.Error(writer, "Failed to fetch artist details", http.StatusInternalServerError)
+			return
+		}
+
+		artist.MemberBis = strings.Join(artist.Members, ",\n")
+		tmpl := template.Must(template.ParseFiles(filepath.Join(webDir, "html", "artists.html")))
+		if err1 := tmpl.Execute(writer, artist); err1 != nil {
+			http.Error(writer, "Failed to render artist details", http.StatusInternalServerError)
 		}
 	})
 
