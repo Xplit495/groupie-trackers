@@ -7,17 +7,19 @@
     <link rel="icon" href="../resourcesWeb/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="../css/artists.css">
     <link rel="stylesheet" href="../css/header.css">
+    <script src="../js/scripts.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-<body>
 
+<body>
 <header>
     <img src="../resourcesWeb/logo.png" alt="Logo" id="logo">
     <div id="search-box">
         <form action="/search" method="GET">
-            <label for="search-input"></label>
-            <input type="text" id="search-input" name="q" placeholder="Rechercher...">
-            <button type="submit">Rechercher</button>
+            <label for="search-input">
+                <input type="text" id="search-input" onkeyup="searchArtist()" placeholder="Rechercher...">
+                <button type="submit">Rechercher</button>
+            </label>
         </form>
         <div id="suggestions" style="display: none;">
         </div>
@@ -35,14 +37,16 @@
 <div class="artist-details">
 
     <div class="artist-image">
-        <h2>Pochette de l'album</h2>
+        <h2 id = "album">Pochette de l'album</h2>
         <img src="{{.Image}}" alt="Photo de {{.Name}}" />
     </div>
 
-    <h2 class="artist-name">Nom du groupe : {{.Name}}</h2>
-    <h1 class="members">Membres : {{.MemberBis}}</h1>
-    <h1 class="creationDate">Date de création : {{.CreationDate}}</h1>
-    <h1 class="firstAlbum">Sortie du premier album : {{.FirstAlbum}}</h1>
+    <div class="information">
+        <h2 class="artist-name">Nom du groupe : {{.Name}}</h2>
+        <h1 class="members">Membres :<br><br>{{.MemberBis}}</h1>
+        <h1 class="creation-date">Date de création :<br><br>{{.CreationDate}}</h1>
+        <h1 class="first-album">Premier album :<br><br>{{.FirstAlbum}}</h1>
+    </div>
 
 </div>
 
