@@ -74,21 +74,3 @@ a:hover, a:active {
 #search-box button:hover {
     background-color: #6e5629;
 }
-
-#suggestions {
-    background-color: #f8f9fa;
-    border: 1px solid #ddd;
-    border-top: none;
-    position: absolute;
-    width: 50%;
-    text-align: left;
-}
-
-#suggestions div {
-    padding: 10px;
-    cursor: pointer;
-}
-
-#suggestions div:hover {
-    background-color: #eee;
-}

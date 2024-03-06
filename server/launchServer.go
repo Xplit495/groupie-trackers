@@ -4,6 +4,8 @@ import (
 	"GroupieTrackers/pkg/utils"
 	"fmt"
 	"html/template"
+	"io"
+	"io/ioutil"
 	"net/http"
 	"path/filepath"
 	"strconv"
@@ -61,6 +63,44 @@ func LaunchServer() {
 		tmpl := template.Must(template.ParseFiles(filepath.Join(webDir, "html", "artists.html")))
 		if err1 := tmpl.Execute(writer, artist); err1 != nil {
 			http.Error(writer, "Failed to render artist details", http.StatusInternalServerError)
+		}
+	})
+
+	http.HandleFunc("/api/search/artists", func(writer http.ResponseWriter, request *http.Request) {
+		request.URL.Query().Get("query")
+
+		resp, err := http.Get("https://groupietrackers.herokuapp.com/api/artists")
+		if err != nil {
+			http.Error(writer, err.Error(), http.StatusInternalServerError)
+			return
+		}
+		defer func(Body io.ReadCloser) {
+			err1 := Body.Close()
+			if err1 != nil {
+
+			}
+		}(resp.Body)
+
+		body, err := ioutil.ReadAll(resp.Body)
+		if err != nil {
+			http.Error(writer, err.Error(), http.StatusInternalServerError)
+			return
+		}
+
+		if request.Method == http.MethodOptions {
+			writer.Header().Set("Access-Control-Allow-Origin", "*")
+			writer.Header().Set("Access-Control-Allow-Methods", "GET, OPTIONS")
+			writer.Header().Set("Access-Control-Allow-Headers", "Content-Type")
+			writer.WriteHeader(http.StatusNoContent)
+			return
+		}
+
+		writer.Header().Set("Access-Control-Allow-Origin", "*")
+		writer.Header().Set("Content-Type", "application/json")
+
+		_, err = writer.Write(body)
+		if err != nil {
+			return
 		}
 	})
 

@@ -7,29 +7,27 @@
     <link rel="icon" href="../resourcesWeb/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="../css/artists.css">
     <link rel="stylesheet" href="../css/header.css">
-    <script src="../js/scripts.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
+
 <header>
     <img src="../resourcesWeb/logo.png" alt="Logo" id="logo">
     <div id="search-box">
         <form action="/search" method="GET">
             <label for="search-input">
-                <input type="text" id="search-input" onkeyup="searchArtist()" placeholder="Rechercher...">
-                <button type="submit">Rechercher</button>
+                <input type="text" id="search-input" onkeyup="searchArtist() " placeholder="Rechercher...">
             </label>
+            <button type="submit">Rechercher</button>
         </form>
-        <div id="suggestions" style="display: none;">
-        </div>
     </div>
     <nav>
         <ul>
             <a href="index.html">Accueil</a>
             <a href="gallery.html">Galerie</a>
-            <a href="">Bouton 3</a>
-            <a href="">Bouton 4</a>
+            <a href="#">Bouton 3</a>
+            <a href="#">Bouton 4</a>
         </ul>
     </nav>
 </header>
@@ -47,7 +45,6 @@
         <h1 class="creation-date">Date de création :<br><br>{{.CreationDate}}</h1>
         <h1 class="first-album">Premier album :<br><br>{{.FirstAlbum}}</h1>
     </div>
-
 </div>
 
 </body>
