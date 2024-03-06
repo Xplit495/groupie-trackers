@@ -1,14 +1,14 @@
 body {
     font-family: 'Roboto', sans-serif;
-    background-image: url('https://media.istockphoto.com/id/1076840920/vector/music-background.jpg?s=612x612&w=0&k=20&c=bMG2SEUYaurIHAjtRbw7bmjLsXyT7iJUvAM5HjL3G3I=');
+    background-image: url('https://img.freepik.com/photos-gratuite/notes-musique-fluide-jaune-fond-noir-vecteur_53876-163069.jpg?w=1060&t=st=1709729686~exp=1709730286~hmac=068be2424ecbee649b5baed79c027df3514c9d6481b62a1489dc161d8026efd9');
     background-size: cover;
     background-position: center;
     margin: 0;
-    color: white;
+    color: white; /* Changement de la couleur du texte en blanc pour un meilleur contraste */
 }
 
 header {
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(33, 37, 41, 0.9); /* Assombrit légèrement l'arrière-plan pour une meilleure lisibilité */
     padding: 20px 0;
 }
 
@@ -24,24 +24,119 @@ nav li {
 }
 
 nav a {
-    color: white;
+    color: rgba(255, 215, 0, 0.95); /* Or pour les liens, contraste élevé avec le noir */
     text-decoration: none;
+    transition: color 0.3s ease-in-out;
+}
+
+nav a:hover {
+    color: #DC143C; /* Rouge cramoisi pour le survol, pour attirer l'attention */
 }
 
 #welcome-message, #features {
     text-align: center;
     margin: 20px;
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, 0.7); /* Rend le fond légèrement plus transparent */
     padding: 20px;
     border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
 footer {
-    background: #222;
-    color: white;
+    background: #343a40; /* Un gris foncé pour le pied de page */
+    color: #F8F9FA; /* Un gris clair pour le texte du pied de page */
     text-align: center;
     padding: 10px;
     position: fixed;
     bottom: 0;
     width: 100%;
+}
+
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+#welcome-section, #services-section, #about-section {
+    text-align: center;
+    margin: 40px auto;
+    width: 80%;
+    background: rgba(0, 0, 0, 0.8); /* Plus opaque pour une meilleure lisibilité */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    color: white; /* Texte en blanc pour contraste */
+}
+/* Typographie */
+body, button, input, select, textarea {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px; /* Taille de base pour une lisibilité accrue */
+    line-height: 1.5; /* Espacement pour une meilleure lisibilité */
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700; /* Plus audacieux pour les titres */
+    color: #FFD700; /* Conserver le doré pour les titres pour un look cohérent */
+    margin-bottom: 0.5em;
+}
+
+h1 {
+    font-size: 2.5em; /* Taille plus grande pour le titre principal */
+}
+
+h2 {
+    font-size: 2em;
+    color: #F0E68C; /* Un jaune plus clair pour différencier les sous-titres */
+}
+
+/* Couleurs et Effets de Texte */
+p, li {
+    color: #FFFFFF; /* Texte blanc pour une lisibilité maximale */
+}
+
+a:hover {
+    color: #FFA07A; /* Un orange saumon pour le survol, moins agressif que le rouge */
+    text-decoration: underline; /* Souligner pour indiquer clairement un lien interactif */
+    transition: color 0.3s ease-in-out;
+}
+
+/* Modifications pour les sections */
+#services-section, #about-section {
+    color: #E6E6FA; /* Lavande légère pour un contraste doux et agréable */
+}
+
+footer {
+    color: #F8F9FA; /* Maintenir un gris clair pour une lisibilité contre le fond sombre */
+}
+.about-title {
+    font-size: 48px; /* Augmente la taille de la police */
+    font-weight: bold; /* Rend le titre plus épais */
+    margin: 20px 0; /* Ajoute un peu d'espace autour du titre */
+    color: #FFD700; /* Utilise la couleur dorée définie pour les éléments de texte importants */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Optionnel: ajoute une ombre pour le faire ressortir davantage */
+}
+.texte-enlarged p {
+    font-size: 24px; /* Exemple de taille de police plus grande */
+    /* Autres ajustements de style si nécessaire */
+}
+.titre-section {
+    font-size: 36px; /* Augmente la taille pour "en gros" */
+    color: #FFD700; /* Définit la couleur du texte en jaune */
+    margin-bottom: 20px; /* Ajoute un peu d'espace sous le titre */
+    text-align: center; /* Centre le titre si désiré */
+}
+#about-section {
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    color: white;
+    margin: 40px auto;
+    width: 80%;
+    text-align: center;
+}
+
+#about-section .texte-enlarged {
+    background: rgba(0, 0, 0, 0.8); /* Fond noir uniquement pour ce paragraphe */
 }
