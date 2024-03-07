@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="fr">
 
 <head>
@@ -15,38 +14,47 @@
 
 <header>
     <img src="../resourcesWeb/logo.png" alt="Logo" id="logo">
-    <div id="search-box" class="search-box">
-        <form action="/search" method="GET" class="search-form">
-            <input type="text" id="search-input" class="search-input" onkeyup="searchArtist()" placeholder="Rechercher...">
-            <button type="submit" class="search-button">Rechercher</button>
+    <div id="search-box">
+        <form action="/search" method="GET">
+            <input type="text" id="search-input" name="q" placeholder="Rechercher...">
+            <button type="submit">Rechercher</button>
         </form>
-        <div id="suggestions" class="suggestions"></div>
     </div>
     <nav>
         <ul>
-            <a href="index.html">Accueil</a>
-            <a href="gallery.html">Galerie</a>
-            <a href="#">Bouton 3</a>
-            <a href="#">Bouton 4</a>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="gallery.html">Galerie</a></li>
+            <li><a href="#">Bouton 3</a></li>
+            <li><a href="#">Bouton 4</a></li>
         </ul>
     </nav>
 </header>
-
 <main>
-
-    <section id="welcome-message">
-        <h2>Bienvenue sur Sinfonia !</h2>
+    <div id="welcome-section">
+        <h1>Bienvenue sur Sinfonia !</h1>
         <p>Votre source de musique et d'inspiration.</p>
-    </section>
+    </div>
+    <div id="services-section">
+        <h2>Nos Services</h2>
+        <ul>
+            <li>Grande bibliothèque musicale</li>
+            <li>Galeries d'art musicale</li>
+        </ul>
+    </div>
+    <div id="about-section">
+        <h2 class="titre-section">Qui sommes-nous ?</h2>
+        <div class="texte-enlarged">
+            <p>L'équipe Sinfonia est un collectif d'individus passionnés, unis par une vision commune : révolutionner la manière dont la musique et l'art se rencontrent et interagissent dans le monde numérique. Fondée en 2024, notre plateforme est le fruit d'une collaboration entre musiciens, artistes visuels, technologues et penseurs avant-gardistes. Notre ambition est de créer un espace où la musique sert d'inspiration pour l'art visuel, et vice versa, créant ainsi un écosystème unique d'expériences sensorielles enrichissantes.</p>
+            <p>Nous sommes guidés par une philosophie simple : la musique et l'art ont le pouvoir de transcender les barrières linguistiques et culturelles, offrant une forme de communication universelle. En fusionnant ces deux mondes, nous visons à inspirer nos visiteurs et à encourager l'expression créative sous toutes ses formes. Notre équipe est dédiée à explorer les possibilités infinies à l'intersection de la technologie, de l'art et de la musique. Nous innovons constamment pour offrir des expériences immersives qui stimulent l'imagination et éveillent les sens.</p>
+            <p>Le parcours de Sinfonia a commencé lors d'une rencontre inspirante entre les fondateurs, qui partageaient une passion commune pour l'impact émotionnel de la musique et de l'art visuel. Cette passion commune a rapidement évolué en une mission : créer une plateforme où les créateurs et les amateurs d'art de tous horizons pourraient se rencontrer, partager et découvrir. En tant qu'espace de curation, nous sélectionnons soigneusement des œuvres qui reflètent la diversité et la richesse de la création artistique et musicale contemporaine.</p>
+            <p>Au-delà de notre engagement envers l'innovation et la créativité, nous sommes profondément investis dans la construction d'une communauté inclusive et soutenante. Sinfonia s'engage à promouvoir des artistes émergents et à offrir des plateformes pour que des voix diverses soient entendues. Nous croyons que l'art et la musique sont des vecteurs puissants de changement social et nous aspirons à ce que notre plateforme contribue à un monde plus connecté, expressif et empathique.</p>
+            <p>Nos ambitions pour l'avenir sont grandes. Nous envisageons de développer des initiatives éducatives pour les jeunes artistes, d'organiser des événements et des expositions en ligne et hors ligne, et de collaborer avec des institutions culturelles pour étendre notre impact. La vision de Sinfonia est de devenir un leader mondial dans la présentation de la musique et de l'art comme une expérience unifiée et transcendante.</p>
+            <p>Rejoignez-nous dans cette aventure passionnante. Ensemble, explorons les nouvelles frontières de l'expression artistique et musicale. Découvrez Sinfonia, où chaque visite offre une nouvelle perspective sur la beauté et le pouvoir unificateur de la musique et de l'art.</p>
+        </div>
+    </div>
 
-    <section id="features">
-        <h3>Nos Services</h3>
-        <p>Grande bibliothèque musicale</p>
-        <p>Galeries d'art musicales</p>
-    </section>
 
 </main>
-
 <footer>
     <p>© 2024 Sinfonia. Tous droits réservés.</p>
 </footer>
