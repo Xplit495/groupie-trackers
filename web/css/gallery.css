@@ -1,7 +1,9 @@
 .cards-grid {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: center;
+    align-content: stretch;
+    flex-direction: row-reverse;
 }
 
 .card-container {

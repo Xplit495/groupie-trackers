@@ -25,11 +25,23 @@ function searchArtist() {
 function showSuggestions(suggestions) {
     var suggestionsContainer = document.getElementById('suggestions');
     suggestionsContainer.innerHTML = '';
+
     if (suggestions.length > 0) {
         suggestions.forEach(artist => {
             var suggestionElement = document.createElement('div');
             suggestionElement.classList.add('suggestion-item');
-            suggestionElement.innerHTML = artist.name;
+
+            var artistImage = document.createElement('img');
+            artistImage.src = artist.image;
+            artistImage.alt = artist.name;
+            artistImage.classList.add('artist-image');
+
+            var artistName = document.createElement('p');
+            artistName.textContent = artist.name;
+            artistName.classList.add('name-artist');
+
+            suggestionElement.appendChild(artistImage);
+            suggestionElement.appendChild(artistName);
 
             suggestionElement.addEventListener('click', function() {
                 window.location.href = "/artists.html?id=" + artist.id;

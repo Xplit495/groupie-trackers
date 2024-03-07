@@ -14,11 +14,15 @@
 <body>
 
 <header>
-    <img src="../resourcesWeb/logo.png" alt="Logo" id="logo">
+    <a href="index.html" id="logo-link">
+        <img src="../resourcesWeb/logo.png" alt="Logo Sinfonia" id="logo">
+    </a>
     <div id="search-box" class="search-box">
         <form action="/search" method="GET" class="search-form">
-            <input type="text" id="search-input" class="search-input" onkeyup="searchArtist()" placeholder="Rechercher...">
-            <button type="submit" class="search-button">Rechercher</button>
+            <label>
+                <input type="text" id="search-input" class="search-input" onkeyup="searchArtist()" placeholder="Rechercher...">
+                <button type="submit" class="search-button">Rechercher</button>
+            </label>
         </form>
         <div id="suggestions" class="suggestions"></div>
     </div>

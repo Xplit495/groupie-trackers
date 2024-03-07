@@ -69,23 +69,13 @@ func LaunchServer() {
 	http.HandleFunc("/api/search/artists", func(writer http.ResponseWriter, request *http.Request) {
 		request.URL.Query().Get("query")
 
-		resp, err := http.Get("https://groupietrackers.herokuapp.com/api/artists")
-		if err != nil {
-			http.Error(writer, err.Error(), http.StatusInternalServerError)
-			return
-		}
-		defer func(Body io.ReadCloser) {
-			err1 := Body.Close()
-			if err1 != nil {
+		resp, _ := http.Get("https://groupietrackers.herokuapp.com/api/artists")
 
-			}
+		defer func(Body io.ReadCloser) {
+			Body.Close()
 		}(resp.Body)
 
-		body, err := ioutil.ReadAll(resp.Body)
-		if err != nil {
-			http.Error(writer, err.Error(), http.StatusInternalServerError)
-			return
-		}
+		body, _ := ioutil.ReadAll(resp.Body)
 
 		if request.Method == http.MethodOptions {
 			writer.Header().Set("Access-Control-Allow-Origin", "*")
@@ -98,10 +88,7 @@ func LaunchServer() {
 		writer.Header().Set("Access-Control-Allow-Origin", "*")
 		writer.Header().Set("Content-Type", "application/json")
 
-		_, err = writer.Write(body)
-		if err != nil {
-			return
-		}
+		writer.Write(body)
 	})
 
 	err := utils.OpenBrowser("http://localhost:8080/")
