@@ -27,7 +27,6 @@ header {
     margin-top: -2%;
 }
 
-
 nav {
     width: 100%;
     margin-bottom: 2%;
@@ -51,13 +50,14 @@ a:hover, a:active {
 }
 
 #search-box {
+    position: relative;
     text-align: center;
     width: 50%;
     margin-top: -4.7%;
 }
 
 #search-input {
-    color: #152d45;
+    color: #b7913e;
     width: 50%;
     padding: 10px;
     margin-right: -5px;
@@ -73,4 +73,52 @@ a:hover, a:active {
 
 #search-box button:hover {
     background-color: #6e5629;
+}
+
+.suggestions {
+    width: 50%;
+    margin-left: 18.5%;
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background: white;
+    z-index: 1000;
+    overflow-y: auto;
+    max-height: 300px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.suggestions div {
+    font-weight: bold;
+    padding: 10px;
+    border-bottom: 1px solid #b7913e;
+    background-color: #FFF;
+    color: #b7913e;
+    text-align: center;
+}
+
+.suggestions div:hover {
+    background-color: #cccccc;
+}
+
+.suggestions div:first-child {
+    border-top: none;
+}
+
+.suggestions::-webkit-scrollbar {
+    display: none;
+}
+
+.suggestion-item {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    cursor: pointer;
+}
+
+.suggestion-item:hover {
+    background-color: #f0f0f0;
 }

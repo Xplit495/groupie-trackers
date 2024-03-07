@@ -7,6 +7,7 @@
     <link rel="icon" href="../resourcesWeb/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="../css/artists.css">
     <link rel="stylesheet" href="../css/header.css">
+    <script src="../js/script.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
@@ -14,13 +15,12 @@
 
 <header>
     <img src="../resourcesWeb/logo.png" alt="Logo" id="logo">
-    <div id="search-box">
-        <form action="/search" method="GET">
-            <label for="search-input">
-                <input type="text" id="search-input" onkeyup="searchArtist() " placeholder="Rechercher...">
-            </label>
-            <button type="submit">Rechercher</button>
+    <div id="search-box" class="search-box">
+        <form action="/search" method="GET" class="search-form">
+            <input type="text" id="search-input" class="search-input" onkeyup="searchArtist()" placeholder="Rechercher...">
+            <button type="submit" class="search-button">Rechercher</button>
         </form>
+        <div id="suggestions" class="suggestions"></div>
     </div>
     <nav>
         <ul>
