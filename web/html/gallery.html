@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../css/gallery.css">
     <link rel="stylesheet" href="../css/header.css">
     <script src="../js/script.js"></script>
+    <script src="../js/filter.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
@@ -36,17 +37,33 @@
     </nav>
 </header>
 
+<label>
+    <input type="date" id="filter-creation-date" placeholder="Date de création">
+</label>
+
+<label>
+    <input type="date" id="filter-first-album-date" placeholder="Date du premier album">
+</label>
+
+<label>
+    <input type="number" id="filter-number-of-members" placeholder="Nombre de membres">
+</label>
+
+<label>
+    <input type="text" id="filter-concert-locations" placeholder="Lieux de concerts">
+</label>
+
 <div class="cards-grid">
     {{range .}}
     <div class="card-container">
         <a href="artists.html?id={{.ID}}">
-        <div class="card-image">
-            <img src="{{.Image}}" alt="Photo de {{.Name}}">
-        </div>
-        <div class="artist-line"></div>
-        <div class="card-content">
-            <p class="artist-name">{{.Name}}</p>
-        </div>
+            <div class="card-image">
+                <img src="{{.Image}}" alt="Photo de {{.Name}}">
+            </div>
+            <div class="artist-line"></div>
+            <div class="card-content">
+                <p class="artist-name">{{.Name}}</p>
+            </div>
         </a>
     </div>
     {{end}}

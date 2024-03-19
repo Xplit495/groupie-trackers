@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"html/template"
 	"io"
-	"io/ioutil"
 	"net/http"
 	"path/filepath"
 	"strconv"
@@ -67,28 +66,16 @@ func LaunchServer() {
 	})
 
 	http.HandleFunc("/api/search/artists", func(writer http.ResponseWriter, request *http.Request) {
-		request.URL.Query().Get("query")
 
 		resp, _ := http.Get("https://groupietrackers.herokuapp.com/api/artists")
 
-		defer func(Body io.ReadCloser) {
-			Body.Close()
-		}(resp.Body)
+		defer resp.Body.Close()
 
-		body, _ := ioutil.ReadAll(resp.Body)
+		data, _ := io.ReadAll(resp.Body)
 
-		if request.Method == http.MethodOptions {
-			writer.Header().Set("Access-Control-Allow-Origin", "*")
-			writer.Header().Set("Access-Control-Allow-Methods", "GET, OPTIONS")
-			writer.Header().Set("Access-Control-Allow-Headers", "Content-Type")
-			writer.WriteHeader(http.StatusNoContent)
-			return
-		}
-
-		writer.Header().Set("Access-Control-Allow-Origin", "*")
 		writer.Header().Set("Content-Type", "application/json")
 
-		writer.Write(body)
+		writer.Write(data)
 	})
 
 	err := utils.OpenBrowser("http://localhost:8080/")
