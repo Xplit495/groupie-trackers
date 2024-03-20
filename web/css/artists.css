@@ -47,3 +47,34 @@
 .information{
     text-align: center;
 }
+
+#mapContainer{
+    margin-bottom: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    flex-direction: column;
+}
+
+#map {
+    height: 500px;
+    width: 90%;
+    border-radius: 20px;
+}
+
+.gm-style .gm-style-iw-c {
+    position: absolute;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    text-align-last: center;
+    -webkit-transform: translate3d(-50%, -100%, 0);
+    transform: translate3d(-50%, -100%, 0);
+    background-color: white;
+    border-radius: 8px;
+    padding: 12px;
+    -webkit-box-shadow: 0 2px 7px 1px rgba(0,0,0,.3);
+    box-shadow: 0 2px 7px 1px rgba(0,0,0,.3);
+}

@@ -8,7 +8,11 @@
     <link rel="stylesheet" href="../css/artists.css">
     <link rel="stylesheet" href="../css/header.css">
     <script src="../js/searchBar.js"></script>
+    <script src="../js/maps.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDt61Vo8K7TRmaP-Yv8eetop9Qphh0-0RE&loading=async&callback=initMap">
+    </script>
 </head>
 
 <body>
@@ -49,6 +53,10 @@
         <h1 class="creation-date">Date de création :<br><br>{{.CreationDate}}</h1>
         <h1 class="first-album">Premier album :<br><br>{{.FirstAlbum}}</h1>
     </div>
+</div>
+
+<div id="mapContainer">
+    <div id="map"></div>
 </div>
 
 </body>

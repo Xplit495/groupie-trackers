@@ -1,6 +1,6 @@
 document.addEventListener('click', function(event) {
-    var isClickInsideSearchBox = document.getElementById('search-box').contains(event.target);
-    var isClickInsideSuggestions = document.getElementById('suggestions').contains(event.target);
+    let isClickInsideSearchBox = document.getElementById('search-box').contains(event.target);
+    let isClickInsideSuggestions = document.getElementById('suggestions').contains(event.target);
 
     if (!isClickInsideSearchBox && !isClickInsideSuggestions) {
         document.getElementById('suggestions').style.display = 'none';
@@ -8,15 +8,14 @@ document.addEventListener('click', function(event) {
 });
 
 function searchInfos() {
-    var input = document.getElementById('search-input').value;
+    let input = document.getElementById('search-input').value;
     if (input.length > 0) {
         fetch('/api/search/artists')
             .then(response => response.json())
             .then(data => {
-                var suggestions = [];
+                let suggestions = [];
 
                 data.forEach(band => {
-                    // Vérifie si le nom du groupe contient l'input
                     if (band.name.toLowerCase().includes(input.toLowerCase())) {
                         suggestions.push({
                             name: band.name,
@@ -26,7 +25,6 @@ function searchInfos() {
                         });
                     }
 
-                    // Vérifie si un des membres contient l'input
                     band.members.forEach(member => {
                         if (member.toLowerCase().includes(input.toLowerCase())) {
                             suggestions.push({
@@ -38,7 +36,6 @@ function searchInfos() {
                         }
                     });
 
-                    // Vérifie si la date du premier album contient l'input
                     if (band.firstAlbum && band.firstAlbum.toLowerCase().includes(input.toLowerCase())) {
                         suggestions.push({
                             name: band.firstAlbum,
@@ -48,7 +45,6 @@ function searchInfos() {
                         });
                     }
 
-                    // Nouveau : Vérifie si la date de création du groupe contient l'input
                     if (band.creationDate && band.creationDate.toString().toLowerCase().includes(input.toLowerCase())) {
                         suggestions.push({
                             name: band.creationDate.toString(),
@@ -75,23 +71,23 @@ Array.prototype.unique = function() {
 }
 
 function showSuggestions(suggestions) {
-    var suggestionsContainer = document.getElementById('suggestions');
+    let suggestionsContainer = document.getElementById('suggestions');
     suggestionsContainer.innerHTML = '';
 
     if (suggestions.length > 0) {
         suggestions.forEach(suggestion => {
-            var suggestionElement = document.createElement('div');
+            let suggestionElement = document.createElement('div');
             suggestionElement.classList.add('suggestion-item');
 
             if (suggestion.image) {
-                var bandImage = document.createElement('img');
+                let bandImage = document.createElement('img');
                 bandImage.src = suggestion.image;
                 bandImage.alt = suggestion.name;
                 bandImage.classList.add('artist-image');
                 suggestionElement.appendChild(bandImage);
             }
 
-            var bandName = document.createElement('p');
+            let bandName = document.createElement('p');
             bandName.classList.add('name-artist');
 
             if (suggestion.type === "Membre") {
@@ -107,7 +103,7 @@ function showSuggestions(suggestions) {
             suggestionElement.appendChild(bandName);
 
             suggestionElement.addEventListener('click', function() {
-                var redirectId = suggestion.redirectTo ? suggestion.redirectTo : suggestion.id;
+                let redirectId = suggestion.redirectTo ? suggestion.redirectTo : suggestion.id;
                 window.location.href = "/artists.html?id=" + redirectId;
             });
 
