@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"io"
 	"net/http"
+	"strings"
 )
 
 type Artist struct {
@@ -12,54 +13,37 @@ type Artist struct {
 	Image        string   `json:"image"`
 	Name         string   `json:"name"`
 	Members      []string `json:"members"`
-	MemberBis    string
-	CreationDate int    `json:"creationDate"`
-	FirstAlbum   string `json:"firstAlbum"`
-	///Relations  	 []struct
+	MemberBis    string   `json:"memberBis"`
+	CreationDate int      `json:"creationDate"`
+	FirstAlbum   string   `json:"firstAlbum"`
 }
 
-func FetchArtists() ([]Artist, error) {
+func FetchArtists() []Artist {
 	resp, err := http.Get("https://groupietrackers.herokuapp.com/api/artists")
+
 	if err != nil {
-		return nil, err
+		fmt.Println("Error fetching artists: ", err)
+		return nil
 	}
 
 	defer func(Body io.ReadCloser) {
 		err1 := Body.Close()
 		if err1 != nil {
-
+			fmt.Println("Failed to close response body:", err1)
+			return
 		}
 	}(resp.Body)
 
 	var artists []Artist
+
 	if err2 := json.NewDecoder(resp.Body).Decode(&artists); err2 != nil {
-		return nil, err2
-	}
-	return artists, nil
-}
-
-func FetchArtistDetails(artistID int) (Artist, error) {
-	url := fmt.Sprintf("https://groupietrackers.herokuapp.com/api/artists/%d", artistID)
-
-	resp, err := http.Get(url)
-	if err != nil {
-		return Artist{}, err
-	}
-	defer func(Body io.ReadCloser) {
-		err1 := Body.Close()
-		if err1 != nil {
-
-		}
-	}(resp.Body)
-
-	if resp.StatusCode != http.StatusOK {
-		return Artist{}, fmt.Errorf("error: status code %d", resp.StatusCode)
+		fmt.Println("Error parsing JSON: ", err2)
+		return nil
 	}
 
-	var artist Artist
-	if err1 := json.NewDecoder(resp.Body).Decode(&artist); err1 != nil {
-		return Artist{}, err1
+	for i := 0; i < len(artists); i++ {
+		artists[i].MemberBis = strings.Join(artists[i].Members, ",\n")
 	}
 
-	return artist, nil
+	return artists
 }

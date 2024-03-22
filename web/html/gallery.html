@@ -21,7 +21,7 @@
     <div id="search-box" class="search-box">
         <form action="/search" method="GET" class="search-form">
             <label>
-                <input type="text" id="search-input" class="search-input" onkeyup="searchInfos()" placeholder="Rechercher...">
+                <input id="search-input" class="search-input" onkeyup="searchInfos()" placeholder="Rechercher...">
                 <button type="submit" class="search-button">Rechercher</button>
             </label>
         </form>
@@ -38,15 +38,15 @@
 </header>
 
 <label>
-    <input type="date" id="filter-creation-date" placeholder="Date de création">
+    <input type="text" id="filter-creation-date" placeholder="Date de création">
 </label>
 
 <label>
-    <input type="date" id="filter-first-album-date" placeholder="Date du premier album">
+    <input type="date" id="filter-first-album-date">
 </label>
 
 <label>
-    <input type="number" id="filter-number-of-members" placeholder="Nombre de membres">
+    <input type="number" id="filter-number-of-members"  max="8" min="1" placeholder="Nombre de membres">
 </label>
 
 <label>
