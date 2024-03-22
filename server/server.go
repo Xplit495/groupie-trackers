@@ -5,28 +5,15 @@ import (
 	"encoding/json"
 	"fmt"
 	"html/template"
-	"io"
 	"net/http"
 	"path/filepath"
 	"strconv"
 )
 
-type Location struct {
-	ID        int      `json:"id"`
-	Image     string   `json:"image"`
-	Locations []string `json:"locations"`
-}
-
-type Locations struct {
-	Index []Location `json:"index"`
-}
-
 var fullArtists = utils.FetchArtists()
 
 func Server() {
 	utils.ClearTerminal()
-
-	//PAGE D'ACCUEIL
 
 	webDir := filepath.Join("web")
 	fileServer := http.FileServer(http.Dir(webDir))
@@ -39,8 +26,6 @@ func Server() {
 		}
 	})
 
-	//Galerie d'artistes
-
 	http.HandleFunc("/gallery.html", func(writer http.ResponseWriter, request *http.Request) {
 		tmpl := template.Must(template.ParseFiles(filepath.Join(webDir, "html", "gallery.html")))
 
@@ -50,8 +35,6 @@ func Server() {
 		}
 
 	})
-
-	//Page d'artiste
 
 	http.HandleFunc("/artists.html", func(writer http.ResponseWriter, request *http.Request) {
 		artistIDStr := request.URL.Query().Get("id")
@@ -72,8 +55,6 @@ func Server() {
 
 	})
 
-	//Barre de recherche artistes
-
 	http.HandleFunc("/api/search/artists", func(writer http.ResponseWriter, request *http.Request) {
 
 		fullArtistsJson, err := json.Marshal(fullArtists)
@@ -89,42 +70,8 @@ func Server() {
 		}
 	})
 
-	//Barre de recherche lieux de concerts
-
 	http.HandleFunc("/api/search/locations/search/bar", func(writer http.ResponseWriter, request *http.Request) {
-		resp, _ := http.Get("https://groupietrackers.herokuapp.com/api/locations")
-
-		defer func(Body io.ReadCloser) {
-			err := Body.Close()
-			if err != nil {
-				fmt.Println("Failed to close response body:", err)
-			}
-		}(resp.Body)
-
-		data, _ := io.ReadAll(resp.Body)
-
-		var response Locations
-
-		err := json.Unmarshal(data, &response)
-		if err != nil {
-			fmt.Println("Error parsing JSON: ", err)
-			return
-		}
-
-		for i, location := range response.Index {
-			for _, artist := range fullArtists {
-				if location.ID == artist.ID {
-					response.Index[i].Image = artist.Image
-					break
-				}
-			}
-		}
-
-		jsonData, err := json.Marshal(response)
-		if err != nil {
-			fmt.Println("Error serializing map to JSON: ", err)
-			return
-		}
+		jsonData := utils.FetchLocations(fullArtists)
 
 		writer.Header().Set("Content-Type", "application/json")
 
@@ -134,8 +81,6 @@ func Server() {
 		}
 
 	})
-
-	//MAPS
 
 	http.HandleFunc("/api/search/locations", func(writer http.ResponseWriter, request *http.Request) {
 		groupID := request.URL.Query().Get("id")
@@ -150,8 +95,6 @@ func Server() {
 			return
 		}
 	})
-
-	//LANCE LE SERVEUR
 
 	err := utils.OpenBrowser("http://localhost:8080/")
 	if err != nil {

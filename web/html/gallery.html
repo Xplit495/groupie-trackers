@@ -21,7 +21,7 @@
     <div id="search-box" class="search-box">
         <form action="/search" method="GET" class="search-form">
             <label>
-                <input id="search-input" class="search-input" onkeyup="searchInfos()" placeholder="Rechercher...">
+                <input type="text" id="search-input" class="search-input" onkeyup="searchInfos()" placeholder="Rechercher...">
                 <button type="submit" class="search-button">Rechercher</button>
             </label>
         </form>
@@ -37,21 +37,27 @@
     </nav>
 </header>
 
-<label>
-    <input type="text" id="filter-creation-date" placeholder="Date de création">
-</label>
+<div id="filter">
+    <label>
+        <input type="text" id="filter-creation-date" placeholder="Date de création">
+    </label>
 
-<label>
-    <input type="date" id="filter-first-album-date">
-</label>
+    <label>
+        <input type="date" id="filter-first-album-date">
+    </label>
 
-<label>
-    <input type="number" id="filter-number-of-members"  max="8" min="1" placeholder="Nombre de membres">
-</label>
+    <label>
+        <input type="number" id="filter-number-of-members"  max="8" min="1" placeholder="Nombre de membres">
+    </label>
 
-<label>
-    <input type="text" id="filter-concert-locations" placeholder="Lieux de concerts">
-</label>
+    <label>
+        <input type="text" id="filter-concert-locations" placeholder="Lieux de concerts">
+    </label>
+
+    <button type="button" id="reset-filters">Réinitialiser</button>
+
+</div>
+
 
 <div class="cards-grid">
     {{range .}}

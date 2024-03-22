@@ -10,12 +10,28 @@ document.addEventListener('click', function(event) {
 function searchInfos() {
     let input = document.getElementById('search-input').value;
     if (input.length > 0) {
-        fetch('/api/search/artists')
-            .then(response => response.json())
-            .then(data => {
-                let suggestions = [];
+        let suggestions = [];
+
+        Promise.all([
+            fetch('/api/search/locations/search/bar').then(response => response.json()),
+            fetch('/api/search/artists').then(response => response.json())
+        ])
+            .then(([data2, data]) => {
+                data2.forEach(item => {
+                    item.locations.forEach(location => {
+                        if (location.toLowerCase().includes(input.toLowerCase())) {
+                            suggestions.push({
+                                name: location,
+                                type: 'Location',
+                                image: item.image,
+                                redirectTo: item.id,
+                            });
+                        }
+                    });
+                });
 
                 data.forEach(band => {
+
                     if (band.name.toLowerCase().includes(input.toLowerCase())) {
                         suggestions.push({
                             name: band.name,
@@ -55,7 +71,7 @@ function searchInfos() {
                     }
                 });
 
-                showSuggestions(suggestions.unique());
+                showSuggestions(suggestions);
             })
             .catch(error => console.error('Error:', error));
     } else {
@@ -63,14 +79,9 @@ function searchInfos() {
     }
 }
 
-// Fonction pour filtrer les suggestions uniques
-Array.prototype.unique = function() {
-    return this.filter(function (value, index, self) {
-        return self.indexOf(value) === index;
-    });
-}
-
 function showSuggestions(suggestions) {
+    console.log(suggestions);
+    console.log(suggestions.length)
     let suggestionsContainer = document.getElementById('suggestions');
     suggestionsContainer.innerHTML = '';
 
@@ -80,27 +91,29 @@ function showSuggestions(suggestions) {
             suggestionElement.classList.add('suggestion-item');
 
             if (suggestion.image) {
-                let bandImage = document.createElement('img');
-                bandImage.src = suggestion.image;
-                bandImage.alt = suggestion.name;
-                bandImage.classList.add('artist-image');
-                suggestionElement.appendChild(bandImage);
+                let suggestionImage = document.createElement('img');
+                suggestionImage.src = suggestion.image;
+                suggestionImage.alt = suggestion.name;
+                suggestionImage.classList.add('artist-image');
+                suggestionElement.appendChild(suggestionImage);
             }
 
-            let bandName = document.createElement('p');
-            bandName.classList.add('name-artist');
+            let suggestionName = document.createElement('p');
+            suggestionName.classList.add('name-artist');
 
             if (suggestion.type === "Membre") {
-                bandName.textContent = suggestion.name + " (Membre)";
+                suggestionName.textContent = suggestion.name + " (Membre)";
             } else if (suggestion.type === "Groupe") {
-                bandName.textContent = suggestion.name + " (Groupe)";
+                suggestionName.textContent = suggestion.name + " (Groupe)";
             } else if (suggestion.type === "FirstAlbum") {
-                bandName.textContent = suggestion.name + " (Premier Album)";
+                suggestionName.textContent = suggestion.name + " (Premier Album)";
             } else if (suggestion.type === "CreationDate") {
-                bandName.textContent = suggestion.name + " (Date de Création)";
+                suggestionName.textContent = suggestion.name + " (Date de Création)";
+            }else if (suggestion.type === "Location") {
+                suggestionName.textContent = suggestion.name + " (Lieu)";
             }
 
-            suggestionElement.appendChild(bandName);
+            suggestionElement.appendChild(suggestionName);
 
             suggestionElement.addEventListener('click', function() {
                 let redirectId = suggestion.redirectTo ? suggestion.redirectTo : suggestion.id;
