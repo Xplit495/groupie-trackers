@@ -8,9 +8,13 @@ import (
 )
 
 type Location struct {
-	ID        int      `json:"id"`
-	Image     string   `json:"image"`
-	Locations []string `json:"locations"`
+	ID           int      `json:"id"`
+	Image        string   `json:"image"`
+	Name         string   `json:"name"`
+	Members      []string `json:"members"`
+	CreationDate int      `json:"creationDate"`
+	FirstAlbum   string   `json:"firstAlbum"`
+	Locations    []string `json:"locations"`
 }
 
 func FetchLocations(fullArtists []Artist) []byte {
@@ -40,7 +44,11 @@ func FetchLocations(fullArtists []Artist) []byte {
 	for i, location := range finalData {
 		for _, artist := range fullArtists {
 			if location.ID == artist.ID {
+				finalData[i].Name = artist.Name
 				finalData[i].Image = artist.Image
+				finalData[i].Members = artist.Members
+				finalData[i].CreationDate = artist.CreationDate
+				finalData[i].FirstAlbum = artist.FirstAlbum
 				break
 			}
 		}

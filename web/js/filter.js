@@ -1,61 +1,58 @@
 document.addEventListener('DOMContentLoaded', function () {
-    document.getElementById('filter-creation-date').addEventListener('keyup', applyFiltersAndDisplayResults);
-    document.getElementById('filter-first-album-date').addEventListener('change', applyFiltersAndDisplayResults);
-    document.getElementById('filter-number-of-members').addEventListener('change', applyFiltersAndDisplayResults);
-    document.getElementById('filter-concert-locations').addEventListener('keyup', applyFiltersAndDisplayResults);
-    document.getElementById('reset-filters').addEventListener('mouseup', applyFiltersAndDisplayResults);
-
-    ['filter-creation-date', 'filter-first-album-date', 'filter-number-of-members', 'filter-concert-locations'].forEach(id => {
-        document.getElementById(id).addEventListener('keyup', function(event) {
-            if (event.key === 'Enter') {
-                applyFiltersAndDisplayResults();
-            }
-        });
-    });
+    document.getElementById('filter-creation-date').addEventListener('keyup', applyFilters);
+    document.getElementById('filter-first-album-date').addEventListener('change', applyFilters);
+    document.getElementById('filter-number-of-members').addEventListener('change', applyFilters);
+    document.getElementById('filter-concert-locations').addEventListener('keyup', applyFilters);
+    document.getElementById('reset-filters').addEventListener('mouseup', resetFilters);
 });
 
-document.addEventListener('DOMContentLoaded', function () {
-    let resetButton = document.getElementById('reset-filters');
+function resetFilters(){
+    document.getElementById('filter-creation-date').value = "";
+    document.getElementById('filter-first-album-date').value = "";
+    document.getElementById('filter-number-of-members').value = "";
+    document.getElementById('filter-concert-locations').value = "";
+    applyFilters();
+}
 
-    resetButton.addEventListener('click', function () {
-        document.getElementById('filter-creation-date').value = "";
-        document.getElementById('filter-first-album-date').value = "";
-        document.getElementById('filter-number-of-members').value = "";
-        document.getElementById('filter-concert-locations').value = "";
-    });
-});
-
-function applyFiltersAndDisplayResults() {
-    fetch('/api/search/artists')
+function applyFilters() {
+    fetch('/api/search/every/informations')
         .then(response => response.json())
         .then(data => {
-            let creationDateFilter = document.getElementById('filter-creation-date').value;
-            let reverseFirstAlbumDateFilter = document.getElementById('filter-first-album-date').value;
-            let firstAlbumDateFilter = reverseFirstAlbumDateFilter.split("-").reverse().join("-");
-            let numberOfMembersFilter = parseInt(document.getElementById('filter-number-of-members').value, 10);
-            let concertLocationsFilter = document.getElementById('filter-concert-locations').value.toLowerCase();
+
+            let creationDateInput = document.getElementById('filter-creation-date').value;
+            let reverseFirstAlbumDateInput = document.getElementById('filter-first-album-date').value;
+            let firstAlbumDateInput = reverseFirstAlbumDateInput.split("-").reverse().join("-");
+            let numberOfMembersInput = parseInt(document.getElementById('filter-number-of-members').value);
+            let concertLocationsInput = document.getElementById('filter-concert-locations').value.toLowerCase();
 
             let filteredResults = data.filter(artist => {
 
                 let matchesCreationDate = false
-                if (artist.creationDate.toString().includes(creationDateFilter.toString())) {
+                if (artist.creationDate.toString().includes(creationDateInput.toString())) {
                     matchesCreationDate = true
                 }
 
                 let matchesFirstAlbum = false
-                if (artist.firstAlbum.includes(firstAlbumDateFilter)) {
+                if (artist.firstAlbum.includes(firstAlbumDateInput)) {
                     matchesFirstAlbum = true
                 }
 
-                let matchesNumberOfMembers = isNaN(numberOfMembersFilter) || (artist.members && artist.members.length === numberOfMembersFilter);
+                let matchesNumberOfMembers = isNaN(numberOfMembersInput)
+                if (artist.members.length === numberOfMembersInput) {
+                    matchesNumberOfMembers = true
+                }
 
+                let matchesConcertLocation = false
+                for (let i = 0; i < artist.locations.length; i++) {
+                    if (artist.locations[i].toLowerCase().includes(concertLocationsInput)) {
+                        matchesConcertLocation = true
+                        break;
+                    }
+                }
 
-                //let matchesConcertLocations = !concertLocationsFilter || (artist.concertLocations && artist.concertLocations.some(location => location.toLowerCase().includes(concertLocationsFilter)));
-
-                return matchesCreationDate && matchesFirstAlbum && matchesNumberOfMembers //matchesConcertLocations;
+                return matchesCreationDate && matchesFirstAlbum && matchesNumberOfMembers && matchesConcertLocation;
             });
 
-            console.log(filteredResults)
             displayFilteredResults(filteredResults);
         })
         .catch(error => {
@@ -68,6 +65,7 @@ function displayFilteredResults(filteredResults) {
     cardsGrid.innerHTML = '';
 
     filteredResults.forEach(artist => {
+
         let cardContainer = document.createElement('div');
         cardContainer.className = 'card-container';
 
@@ -92,6 +90,7 @@ function displayFilteredResults(filteredResults) {
         artistName.textContent = artist.name;
 
         cardImageDiv.appendChild(image);
+
         cardContent.appendChild(artistName);
 
         cardLink.appendChild(cardImageDiv);
@@ -99,6 +98,7 @@ function displayFilteredResults(filteredResults) {
         cardLink.appendChild(cardContent);
 
         cardContainer.appendChild(cardLink);
+
         cardsGrid.appendChild(cardContainer);
     });
 }

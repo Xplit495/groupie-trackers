@@ -5,17 +5,12 @@
     <meta charset="UTF-8">
     <title>Sinfonia</title>
     <link rel="icon" href="../resourcesWeb/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="../css/artists.css">
+    <link rel="stylesheet" href="../css/searchPage.css">
     <link rel="stylesheet" href="../css/header.css">
     <script src="../js/searchBar.js"></script>
-    <script src="../js/maps.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script async defer
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDt61Vo8K7TRmaP-Yv8eetop9Qphh0-0RE&loading=async&callback=initMap">
-    </script>
+    <script src="../js/searchPage.js"></script>
 </head>
-
-<body>
 
 <header>
     <a href="index.html" id="logo-link">
@@ -40,24 +35,14 @@
     </nav>
 </header>
 
-<div class="artist-details">
+<body>
 
-    <div class="artist-image">
-        <h2 id = "album">Pochette de l'album</h2>
-        <img src="{{.Image}}" alt="Photo de {{.Name}}" />
-    </div>
-
-    <div class="information">
-        <h2 class="artist-name">Nom du groupe : {{.Name}}</h2>
-        <h1 class="members">Membres :<br><br>{{.MemberBis}}</h1>
-        <h1 class="creation-date">Date de création :<br><br>{{.CreationDate}}</h1>
-        <h1 class="first-album">Premier album :<br><br>{{.FirstAlbum}}</h1>
-    </div>
+<div id="pre-query">
+    <h1 id="query-container">Recherche pour : {{.QueryValue}}</h1>
 </div>
 
-<div id="mapContainer">
-    <div id="map"></div>
-</div>
+<div class="cards-grid"></div>
 
 </body>
+
 </html>

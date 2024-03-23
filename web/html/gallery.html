@@ -19,9 +19,9 @@
         <img src="../resourcesWeb/logo.png" alt="Logo Sinfonia" id="logo">
     </a>
     <div id="search-box" class="search-box">
-        <form action="/search" method="GET" class="search-form">
+        <form action="/searchPage" method="GET" class="search-form">
             <label>
-                <input type="text" id="search-input" class="search-input" onkeyup="searchInfos()" placeholder="Rechercher...">
+                <input type="text" id="search-input" name="query" class="search-input" onkeyup="searchInfos()" placeholder="Rechercher...">
                 <button type="submit" class="search-button">Rechercher</button>
             </label>
         </form>

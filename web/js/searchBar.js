@@ -12,23 +12,9 @@ function searchInfos() {
     if (input.length > 0) {
         let suggestions = [];
 
-        Promise.all([
-            fetch('/api/search/locations/search/bar').then(response => response.json()),
-            fetch('/api/search/artists').then(response => response.json())
-        ])
-            .then(([data2, data]) => {
-                data2.forEach(item => {
-                    item.locations.forEach(location => {
-                        if (location.toLowerCase().includes(input.toLowerCase())) {
-                            suggestions.push({
-                                name: location,
-                                type: 'Location',
-                                image: item.image,
-                                redirectTo: item.id,
-                            });
-                        }
-                    });
-                });
+        fetch('/api/search/every/informations')
+            .then(response => response.json())
+            .then(data => {
 
                 data.forEach(band => {
 
@@ -69,6 +55,18 @@ function searchInfos() {
                             redirectTo: band.id
                         });
                     }
+
+                    band.locations.forEach(location => {
+                        if (location.toLowerCase().includes(input.toLowerCase())) {
+                            suggestions.push({
+                                name: location,
+                                type: 'Location',
+                                image: band.image,
+                                redirectTo: band.id,
+                            });
+                        }
+                    });
+
                 });
 
                 showSuggestions(suggestions);

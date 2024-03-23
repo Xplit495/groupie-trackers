@@ -33,7 +33,6 @@ func Server() {
 		if err1 != nil {
 			return
 		}
-
 	})
 
 	http.HandleFunc("/artists.html", func(writer http.ResponseWriter, request *http.Request) {
@@ -52,25 +51,20 @@ func Server() {
 		if err1 := tmpl.Execute(writer, artist); err1 != nil {
 			http.Error(writer, "Failed to render artist details", http.StatusInternalServerError)
 		}
-
 	})
 
-	http.HandleFunc("/api/search/artists", func(writer http.ResponseWriter, request *http.Request) {
+	http.HandleFunc("/searchPage", func(writer http.ResponseWriter, request *http.Request) {
+		queryValue := request.URL.Query().Get("query")
 
-		fullArtistsJson, err := json.Marshal(fullArtists)
+		tmpl := template.Must(template.ParseFiles(filepath.Join(webDir, "html", "searchPage.html")))
+
+		err := tmpl.Execute(writer, map[string]string{"QueryValue": queryValue})
 		if err != nil {
-			fmt.Println("Error serializing artists to JSON: ", err)
-		}
-
-		writer.Header().Set("Content-Type", "application/json")
-
-		_, err1 := writer.Write(fullArtistsJson)
-		if err1 != nil {
 			return
 		}
 	})
 
-	http.HandleFunc("/api/search/locations/search/bar", func(writer http.ResponseWriter, request *http.Request) {
+	http.HandleFunc("/api/search/every/informations", func(writer http.ResponseWriter, request *http.Request) {
 		jsonData := utils.FetchLocations(fullArtists)
 
 		writer.Header().Set("Content-Type", "application/json")
