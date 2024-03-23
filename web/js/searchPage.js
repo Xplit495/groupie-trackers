@@ -60,7 +60,6 @@ if (queryValue.length > 0) {
                 });
 
             });
-            console.log(suggestions);
             displayedResults(suggestions);
         })
         .catch(error => console.error('Error:', error));

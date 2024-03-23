@@ -81,7 +81,6 @@ function getConcertLocations() {
             return response.json();
         })
         .then(data => {
-            console.log(data)
             codeAddresses(data);
         })
         .catch(error => console.error(error));

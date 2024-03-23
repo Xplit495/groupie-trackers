@@ -78,8 +78,6 @@ function searchInfos() {
 }
 
 function showSuggestions(suggestions) {
-    console.log(suggestions);
-    console.log(suggestions.length)
     let suggestionsContainer = document.getElementById('suggestions');
     suggestionsContainer.innerHTML = '';
 
