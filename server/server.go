@@ -5,6 +5,9 @@ import (
 	"encoding/json"
 	"fmt"
 	"html/template"
+	"io"
+	"io/ioutil"
+	"log"
 	"net/http"
 	"path/filepath"
 	"strconv"
@@ -51,6 +54,60 @@ func Server() {
 		if err1 := tmpl.Execute(writer, artist); err1 != nil {
 			http.Error(writer, "Failed to render artist details", http.StatusInternalServerError)
 		}
+	})
+
+	http.HandleFunc("/deezer", func(writer http.ResponseWriter, request *http.Request) {
+		artistIDStr := request.URL.Query().Get("artistId")
+
+		var artistName string
+
+		for _, artist := range fullArtists {
+			if strconv.Itoa(artist.ID) == artistIDStr {
+				artistName = artist.Name
+				break
+			}
+		}
+
+		resp, err := http.Get("https://api.deezer.com/search?q=" + artistName)
+
+		if err != nil {
+			fmt.Println("Error fetching artists: ", err)
+			return
+		}
+
+		defer func(Body io.ReadCloser) {
+			err1 := Body.Close()
+			if err1 != nil {
+				fmt.Println("Failed to close response body:", err1)
+				return
+			}
+		}(resp.Body)
+
+		deezerData, _ := ioutil.ReadAll(resp.Body)
+
+		type Artist struct {
+			ID int `json:"id"`
+		}
+
+		type Track struct {
+			Artist Artist `json:"artist"`
+		}
+
+		type Data struct {
+			Data []Track `json:"data"`
+		}
+		var result Data
+
+		err2 := json.Unmarshal(deezerData, &result)
+		if err2 != nil {
+			log.Fatalf("Error decoding JSON: %s", err2)
+		}
+
+		_, err1 := writer.Write([]byte(strconv.Itoa(result.Data[0].Artist.ID)))
+		if err1 != nil {
+			return
+		}
+
 	})
 
 	http.HandleFunc("/searchPage", func(writer http.ResponseWriter, request *http.Request) {

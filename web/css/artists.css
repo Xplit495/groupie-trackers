@@ -78,3 +78,14 @@
     -webkit-box-shadow: 0 2px 7px 1px rgba(0,0,0,.3);
     box-shadow: 0 2px 7px 1px rgba(0,0,0,.3);
 }
+
+.deezer-widget-container {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 3%;
+}
+
+#deezer-widget{
+    width: 50%;
+}
