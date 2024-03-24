@@ -1,6 +1,13 @@
+.informations-grid{
+    margin-left: 5%;
+    display: flex;
+    align-items: center;
+}
+
 .artist-details {
-    max-width: 800px;
-    margin: 40px auto;
+    width: 155%;
+    margin-top: 3%;
+    margin-bottom: 3%;
     padding: 20px;
     background-color: #102d44;
     border-radius: 10px;
@@ -23,6 +30,7 @@
     color: #ffffff;
     text-decoration-line: underline;
 }
+
 .artist-name,
 .members,
 .creation-date,
@@ -46,6 +54,16 @@
 
 .information{
     text-align: center;
+}
+
+.deezer-widget-container {
+    margin-left: 5%;
+    display: flex;
+    width: 100%;
+}
+
+#deezer-widget{
+    width: 100%;
 }
 
 #mapContainer{
@@ -77,15 +95,4 @@
     padding: 12px;
     -webkit-box-shadow: 0 2px 7px 1px rgba(0,0,0,.3);
     box-shadow: 0 2px 7px 1px rgba(0,0,0,.3);
-}
-
-.deezer-widget-container {
-    display: flex;
-    width: 100%;
-    justify-content: center;
-    margin-bottom: 3%;
-}
-
-#deezer-widget{
-    width: 50%;
 }

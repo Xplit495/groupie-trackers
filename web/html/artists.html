@@ -41,23 +41,24 @@
     </nav>
 </header>
 
-<div class="artist-details">
+<div class="informations-grid">
+    <div class="artist-details">
 
-    <div class="artist-image">
-        <h2 id = "album">Pochette de l'album</h2>
-        <img src="{{.Image}}" alt="Photo de {{.Name}}" />
+        <div class="artist-image">
+            <h2 id = "album">Pochette de l'album</h2>
+            <img src="{{.Image}}" alt="Photo de {{.Name}}" />
+        </div>
+
+        <div class="information">
+            <h2 class="artist-name">Nom du groupe : {{.Name}}</h2>
+            <h1 class="members">Membres :<br><br>{{.MemberBis}}</h1>
+            <h1 class="creation-date">Date de création :<br><br>{{.CreationDate}}</h1>
+            <h1 class="first-album">Premier album :<br><br>{{.FirstAlbum}}</h1>
+        </div>
+
     </div>
 
-    <div class="information">
-        <h2 class="artist-name">Nom du groupe : {{.Name}}</h2>
-        <h1 class="members">Membres :<br><br>{{.MemberBis}}</h1>
-        <h1 class="creation-date">Date de création :<br><br>{{.CreationDate}}</h1>
-        <h1 class="first-album">Premier album :<br><br>{{.FirstAlbum}}</h1>
-    </div>
-
-    <div class="deezer-widget-container">
-
-    </div>
+    <div class="deezer-widget-container"></div>
 
 </div>
 
