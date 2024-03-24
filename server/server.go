@@ -5,9 +5,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"html/template"
-	"io"
-	"io/ioutil"
-	"log"
 	"net/http"
 	"path/filepath"
 	"strconv"
@@ -68,42 +65,9 @@ func Server() {
 			}
 		}
 
-		resp, err := http.Get("https://api.deezer.com/search?q=" + artistName)
+		deezerID := utils.FetchDeezer(artistName)
 
-		if err != nil {
-			fmt.Println("Error fetching artists: ", err)
-			return
-		}
-
-		defer func(Body io.ReadCloser) {
-			err1 := Body.Close()
-			if err1 != nil {
-				fmt.Println("Failed to close response body:", err1)
-				return
-			}
-		}(resp.Body)
-
-		deezerData, _ := ioutil.ReadAll(resp.Body)
-
-		type Artist struct {
-			ID int `json:"id"`
-		}
-
-		type Track struct {
-			Artist Artist `json:"artist"`
-		}
-
-		type Data struct {
-			Data []Track `json:"data"`
-		}
-		var result Data
-
-		err2 := json.Unmarshal(deezerData, &result)
-		if err2 != nil {
-			log.Fatalf("Error decoding JSON: %s", err2)
-		}
-
-		_, err1 := writer.Write([]byte(strconv.Itoa(result.Data[0].Artist.ID)))
+		_, err1 := writer.Write([]byte(deezerID))
 		if err1 != nil {
 			return
 		}
