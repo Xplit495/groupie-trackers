@@ -60,11 +60,20 @@ if (queryValue.length > 0) {
                 });
 
             });
-            displayedResults(suggestions);
+
+            if (suggestions.length === 0) {
+                let noResults = document.createElement('p');
+                noResults.textContent = 'Aucun résultat trouvé';
+                noResults.style.textAlign = 'center';
+                noResults.style.marginTop = '3%';
+                noResults.style.fontSize = '200%';
+                noResults.style.fontWeight = 'bold';
+                document.querySelector('.cards-grid').appendChild(noResults);
+            }else{
+                displayedResults(suggestions);
+            }
         })
         .catch(error => console.error('Error:', error));
-} else {
-    document.getElementById('suggestions').style.display = 'none';
 }
 
 function displayedResults(filteredResults) {
