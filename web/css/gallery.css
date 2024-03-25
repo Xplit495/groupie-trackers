@@ -52,20 +52,25 @@
     justify-content: center;
     margin: 20px 0;
 }
-
-#filter-creation-date{
+#filter-creation-date, #filter-first-album-date, #filter-number-of-members, #filter-concert-locations, #reinitialiser {
     width: 100%;
+    background-color: #fffaf0;
+    border: 2px solid #e6c300;
+    padding: 12px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
 }
 
-#filter-first-album-date{
-    width: 100%;
+#filter-creation-date:hover, #filter-first-album-date:hover, #filter-number-of-members:hover, #filter-concert-locations:hover, #reset-filters:hover {
+    border-color: #d4af37;
+    box-shadow: 0 5px 8px rgba(0, 0, 0, 0.15);
 }
 
-#filter-number-of-members{
-    font-size: 85%;
-    width: 100%;
+#filter-creation-date:focus, #filter-first-album-date:focus, #filter-number-of-members:focus, #filter-concert-locations:focus, #reset-filters:hover {
+    outline: none;
+    border-color: #c9b037;
 }
-
-#filter-concert-locations{
-    width: 100%;
+#reset-filters {
+    border: 2px solid gold;
 }
