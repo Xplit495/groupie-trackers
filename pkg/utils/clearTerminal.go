@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"os"
 	"os/exec"
+	"runtime"
 )
 
 // ClearTerminal clears the terminal screen.
@@ -11,8 +12,14 @@ func ClearTerminal() {
 	// Declare a variable to hold the command to clear the terminal
 	var cmd *exec.Cmd
 
-	// Set the command to execute for clearing the terminal
-	cmd = exec.Command("cmd", "/c", "cls")
+	// Check the operating system and set the appropriate command
+	if runtime.GOOS == "windows" {
+		// Windows command to clear the terminal
+		cmd = exec.Command("cmd", "/c", "cls")
+	} else {
+		// Unix/Linux command to clear the terminal
+		cmd = exec.Command("clear")
+	}
 
 	// Set the standard output of the command to os.Stdout
 	cmd.Stdout = os.Stdout
