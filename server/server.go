@@ -139,7 +139,7 @@ func Server() {
 	err7 := utils.OpenBrowser("http://localhost:8080/")
 	if err7 != nil {
 		fmt.Println("Failed to open browser:", err7)
-		return
+		fmt.Println("Please navigate to http://localhost:8080/ to view the web application.")
 	}
 
 	// Start the HTTP server
