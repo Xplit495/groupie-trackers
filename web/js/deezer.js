@@ -1,7 +1,7 @@
 const params = new URLSearchParams(window.location.search);
 const artistId = params.get('id');
 
-fetch(`/deezer?artistId=${artistId}`)
+fetch(`/api/deezer?artistId=${artistId}`)
     .then(response => response.text())
     .then(artistId => {
 

@@ -21,7 +21,7 @@
     <div id="search-box" class="search-box">
         <form action="/searchPage" method="GET" class="search-form">
             <label>
-                <input type="text" id="search-input" name="query" class="search-input" onkeyup="searchInfos()" placeholder="Rechercher...">
+                <input type="text" id="search-input" required name="query" class="search-input" onkeyup="searchInfos()" placeholder="Rechercher...">
                 <button type="submit" class="search-button">Rechercher</button>
             </label>
         </form>
@@ -31,33 +31,38 @@
         <ul>
             <a href="index.html">Accueil</a>
             <a href="gallery.html">Galerie</a>
-            <a href="#">Bouton 3</a>
+            <a href="shazamPage.html">Shazam</a>
             <a href="#">Bouton 4</a>
         </ul>
     </nav>
 </header>
 
-<div id="filter">
-    <label>
-        <input type="text" id="filter-creation-date" placeholder="Date de création">
-    </label>
+<div id="pre-filter-container">
+    <div id="filter-container">
+        <div id="filter">
 
-    <label>
-        <input type="date" id="filter-first-album-date">
-    </label>
+            <h2 id="text">Filtres :</h2>
 
-    <label>
-        <input type="number" id="filter-number-of-members"  max="8" min="1" placeholder="Nombre de membres">
-    </label>
+            <label>
+                <input type="text" id="filter-creation-date" placeholder="Date de création">
+            </label>
 
-    <label>
-        <input type="text" id="filter-concert-locations" placeholder="Lieux de concerts">
-    </label>
+            <label>
+                <input type="date" id="filter-first-album-date">
+            </label>
 
-    <button type="button" id="reset-filters">Réinitialiser</button>
+            <label>
+                <input type="number" id="filter-number-of-members"  max="8" min="1" placeholder="Nombre de membres">
+            </label>
 
+            <label>
+                <input type="text" id="filter-concert-locations" placeholder="Lieux de concerts">
+            </label>
+
+            <button type="button" id="reset-filters">Réinitialiser</button>
+        </div>
+    </div>
 </div>
-
 
 <div class="cards-grid">
     {{range .}}

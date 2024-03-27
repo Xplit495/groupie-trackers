@@ -1,0 +1,27 @@
+#research{
+    margin-top: 16%;
+    text-align: center;
+}
+
+#research h2{
+    margin-bottom: 2%;
+    color: white;
+}
+
+#shazam-input{
+    border: none;
+    width: 15%;
+    padding: 0.5%;
+}
+
+#shazam-input:focus{
+    outline: none;
+}
+
+#shazam-search-button{
+    background-color: #b7913e;
+    color: white;
+    margin-left: -1%;
+    padding: 0.5%;
+    border: none;
+}

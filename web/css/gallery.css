@@ -47,30 +47,66 @@
     color: #b7913e;
 }
 
-#filter{
+#pre-filter-container{
+    padding: 1% 1% 0.5%;
     display: flex;
     justify-content: center;
-    margin: 20px 0;
 }
-#filter-creation-date, #filter-first-album-date, #filter-number-of-members, #filter-concert-locations, #reinitialiser {
-    width: 100%;
-    background-color: #fffaf0;
-    border: 2px solid #e6c300;
-    padding: 12px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease-in-out;
+#filter-container{
+    border: 2px solid #b7913e;
+    padding: 1%;
+    width: 49%;
+    display: flex;
+    background-color: #102d44;
+    justify-content: center;
 }
 
-#filter-creation-date:hover, #filter-first-album-date:hover, #filter-number-of-members:hover, #filter-concert-locations:hover, #reset-filters:hover {
-    border-color: #d4af37;
-    box-shadow: 0 5px 8px rgba(0, 0, 0, 0.15);
+#filter{
+    text-align: center;
+    width: 90%;
 }
 
-#filter-creation-date:focus, #filter-first-album-date:focus, #filter-number-of-members:focus, #filter-concert-locations:focus, #reset-filters:hover {
-    outline: none;
-    border-color: #c9b037;
+#text{
+    color: #b7913e;
+    margin-bottom: 2%;
 }
-#reset-filters {
-    border: 2px solid gold;
+
+#filter-creation-date{
+    color: grey;
+    background-color: #102d44;
+    text-align: center;
+    padding: 1%;
+    border-radius: 6%;
+}
+
+#filter-first-album-date{
+    color: grey;
+    background-color: #102d44;
+    text-align: center;
+    padding: 1%;
+    border-radius: 6%;
+}
+
+#filter-number-of-members{
+    color: grey;
+    background-color: #102d44;
+    text-align: center;
+    padding: 1%;
+    width: 28%;
+    border-radius: 6%;
+}
+
+#filter-concert-locations{
+    color: grey;
+    background-color: #102d44;
+    text-align: center;
+    padding: 1%;
+    border-radius: 6%;
+}
+
+#reset-filters{
+    background-color: #102d44;
+    color: #b7913e;
+    padding: 1%;
+    margin-top: 3%;
 }

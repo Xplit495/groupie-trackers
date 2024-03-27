@@ -53,7 +53,39 @@ func Server() {
 		}
 	})
 
-	http.HandleFunc("/deezer", func(writer http.ResponseWriter, request *http.Request) {
+	http.HandleFunc("/shazamPage.html", func(writer http.ResponseWriter, request *http.Request) {
+		http.ServeFile(writer, request, filepath.Join(webDir, "html", "shazamPage.html"))
+
+	})
+
+	http.HandleFunc("/shazamResults", func(writer http.ResponseWriter, request *http.Request) {
+		http.ServeFile(writer, request, filepath.Join(webDir, "html", "shazamResults.html"))
+	})
+
+	http.HandleFunc("/searchPage", func(writer http.ResponseWriter, request *http.Request) {
+		queryValue := request.URL.Query().Get("query")
+
+		tmpl := template.Must(template.ParseFiles(filepath.Join(webDir, "html", "searchPage.html")))
+
+		err := tmpl.Execute(writer, map[string]string{"QueryValue": queryValue})
+		if err != nil {
+			return
+		}
+	})
+
+	http.HandleFunc("/api/shazam", func(writer http.ResponseWriter, request *http.Request) {
+		shazamInput := request.URL.Query().Get("query")
+
+		shazamData := utils.FetchShazam(shazamInput)
+
+		_, err1 := writer.Write(shazamData)
+		if err1 != nil {
+			return
+		}
+
+	})
+
+	http.HandleFunc("/api/deezer", func(writer http.ResponseWriter, request *http.Request) {
 		artistIDStr := request.URL.Query().Get("artistId")
 
 		var artistName string
@@ -72,17 +104,6 @@ func Server() {
 			return
 		}
 
-	})
-
-	http.HandleFunc("/searchPage", func(writer http.ResponseWriter, request *http.Request) {
-		queryValue := request.URL.Query().Get("query")
-
-		tmpl := template.Must(template.ParseFiles(filepath.Join(webDir, "html", "searchPage.html")))
-
-		err := tmpl.Execute(writer, map[string]string{"QueryValue": queryValue})
-		if err != nil {
-			return
-		}
 	})
 
 	http.HandleFunc("/api/search/every/informations", func(writer http.ResponseWriter, request *http.Request) {
