@@ -25,3 +25,8 @@
     padding: 0.5%;
     border: none;
 }
+
+#shazam-search-button:hover{
+    cursor: pointer;
+    background-color: #6e5629;
+}

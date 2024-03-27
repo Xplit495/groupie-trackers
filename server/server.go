@@ -78,6 +78,8 @@ func Server() {
 
 		shazamData := utils.FetchShazam(shazamInput)
 
+		writer.Header().Set("Content-Type", "application/json")
+
 		_, err1 := writer.Write(shazamData)
 		if err1 != nil {
 			return
@@ -98,6 +100,8 @@ func Server() {
 		}
 
 		deezerID := utils.FetchDeezer(artistName)
+
+		writer.Header().Set("Content-Type", "application/json")
 
 		_, err1 := writer.Write([]byte(deezerID))
 		if err1 != nil {

@@ -1,0 +1,84 @@
+#loadingScreen{
+    color: #ffffff;
+    display: none; /* Hiding the loading screen by default */
+    font-weight: bold; /* Setting the font weight of the loading text */
+    font-size: 25px; /* Setting the font size of the loading text */
+    margin-top: 10%; /* Adding margin space at the top of the loading screen */
+    text-align: -webkit-center; /* Centering text horizontally */
+}
+
+.loader {
+    margin-top: 4%; /* Adding margin space at the top of the loader */
+    border: 16px solid #102d44; /* Setting the border of the loader */
+    border-top: 16px solid #b7913e; /* Setting the top border color of the loader */
+    border-radius: 50%; /* Creating a circle shape for the loader */
+    width: 200px; /* Setting the width of the loader */
+    height: 200px; /* Setting the height of the loader */
+    animation: spin 2s linear infinite; /* Adding a spinning animation to the loader */
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); } /* Setting the initial rotation angle of the loader */
+    100% { transform: rotate(360deg); } /* Setting the final rotation angle of the loader */
+}
+
+#informations-container{
+    margin-top: 2%;
+    display: flex;
+    flex-direction: column;
+}
+
+#artists-container{
+    display: flex;
+    text-align: center;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+#artist-container{
+    background-color: #102D44FF;
+    border: 2px solid #b7913e;
+    margin-top: 2%;
+}
+
+#artist-container h2{
+    font-size: xx-large;
+    color: #b7913e;
+    margin-top: 3%;
+    border-top: 2px solid #b7913e;
+    padding: 2%;
+}
+
+#artist-container img{
+    margin-top: 3%;
+    width: 35%;
+    border-radius: 50%;
+}
+
+#text-tracks-container{
+    text-align: center;
+    margin-top: 2%;
+}
+
+#text-artists-container{
+    text-align: center;
+}
+
+#tracks-container{
+    display: flex;
+    text-align: center;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+#track-container{
+    text-align: center;
+    margin-top: 2%;
+}
+
+#track-container h2{
+    color: #b7913e;
+    margin-bottom: 2%;
+}
