@@ -2,62 +2,86 @@
 <html lang="fr">
 
 <head>
+    <!-- Meta charset declaration -->
     <meta charset="UTF-8">
+    <!-- Title of the webpage -->
     <title>Sinfonia</title>
+    <!-- Link to the website's favicon -->
     <link rel="icon" href="../resourcesWeb/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="../css/styles.css">
+    <!-- Link to the CSS file for header styling -->
     <link rel="stylesheet" href="../css/header.css">
+    <!-- Link to the CSS file for general styling -->
+    <link rel="stylesheet" href="../css/styles.css">
+    <!-- Script source for search bar functionality -->
     <script src="../js/searchBar.js"></script>
+    <!-- Meta tag for responsive viewport -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
 
 <header>
+    <!-- Link to the homepage with logo image -->
     <a href="index.html" id="logo-link">
         <img src="../resourcesWeb/logo.png" alt="Logo Sinfonia" id="logo">
     </a>
+    <!-- Search box with form for searching -->
     <div id="search-box" class="search-box">
         <form action="/searchPage" method="GET" class="search-form">
             <label>
+                <!-- Input field for search query -->
                 <input type="text" id="search-input" required name="query" class="search-input" onkeyup="searchInfos()" placeholder="Rechercher...">
+                <!-- Submit button for search -->
                 <button type="submit" class="search-button">Rechercher</button>
             </label>
         </form>
+        <!-- Suggestions dropdown for search -->
         <div id="suggestions" class="suggestions"></div>
     </div>
+    <!-- Navigation menu -->
     <nav>
         <ul>
+            <!-- Navigation links -->
             <a href="index.html">Accueil</a>
             <a href="gallery.html">Galerie</a>
             <a href="shazamPage.html">Shazam</a>
-            <a href="#">Bouton 4</a>
         </ul>
     </nav>
 </header>
 
+<!-- Welcome section -->
+<div id="welcome-section">
+    <!-- Heading for welcome section -->
+    <h1>Bienvenue sur Sinfonia !</h1>
+    <!-- Paragraph for welcome message -->
+    <p>Votre source de musique et d'inspiration.</p>
+</div>
 
-    <div id="welcome-section">
-        <h1>Bienvenue sur Sinfonia !</h1>
-        <p>Votre source de musique et d'inspiration.</p>
-    </div>
-    <div id="services-section">
-        <h1>Nos Services :</h1>
-        <p>- Bibliothèque musicale<br>- Infos musicale</p>
-    </div>
-    <div id="about-section">
-        <h1 class="titre-section">Qui sommes-nous ?</h1>
-        <div class="texte-enlarged">
-            <p>
+<!-- Services section -->
+<div id="services-section">
+    <!-- Heading for services section -->
+    <h1>Nos Services :</h1>
+    <!-- List of services -->
+    <p>- Bibliothèque musicale<br>- Infos musicales</p>
+</div>
+
+<!-- About section -->
+<div id="about-section">
+    <!-- Heading for about section -->
+    <h1 class="titre-section">Qui sommes-nous ?</h1>
+    <!-- Enlarged text container -->
+    <div class="texte-enlarged">
+        <!-- Paragraph describing about section -->
+        <p>
                 Sinfonia est un collectif dynamique fondé en 2024, fusionnant musique, art, et technologie pour transformer l'interaction numérique artistique. Notre mission est de créer un espace où l'art visuel et la musique s'inspirent mutuellement, enrichissant ainsi notre écosystème d'expériences sensorielles. Nous croyons en la capacité de la musique et de l'art à transcender les frontières, servant de langage universel. <br><br> En mêlant art et musique, nous cherchons à inspirer et à promouvoir la créativité.
 
                 Notre aventure a débuté avec une passion partagée pour l'impact émotionnel de l'art et la musique, menant à la création d'une plateforme pour les créateurs et les amateurs d'art. Sinfonia, c'est la curation d'œuvres diverses et contemporaines, dans un esprit d'innovation et d'immersion.
-
             </p>
         </div>
     </div>
 
 <footer>
+    <!-- Copyright information -->
     <p>© 2024 Sinfonia. Tous droits réservés.</p>
 </footer>
 

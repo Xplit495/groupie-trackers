@@ -1,55 +1,62 @@
+/* Styling for body */
 body {
-    background-image: url('../resourcesWeb/fond.jpeg');
-    background-size: cover;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
+    background-image: url('../resourcesWeb/fond.jpg'); /* Sets background image */
+    background-size: cover; /* Sets background image to cover the entire screen */
+    background-attachment: fixed; /* Fixes the background image position */
+    background-repeat: no-repeat; /* Prevents background image from repeating */
 }
 
+/* Styling for enlarged text */
 .texte-enlarged p {
-    font-size: 24px;
+    font-size: 24px; /* Sets font size to 24px */
 }
 
+/* Styling for h1 */
 h1 {
-    color: #ffce46;
-    padding-bottom: 1%;
+    color: #ffce46; /* Sets text color to yellow */
+    padding-bottom: 1%; /* Adds padding at the bottom */
 }
 
+/* Styling for welcome section */
 #welcome-section {
-    color: white;
-    text-align: center;
-    margin: 40px auto;
-    width: 80%;
-    background: rgba(0, 0, 0, 0.8);
-    padding: 20px;
-    border-radius: 10px;
+    color: white; /* Sets text color to white */
+    text-align: center; /* Centers text horizontally */
+    margin: 40px auto; /* Sets margin */
+    width: 80%; /* Sets width to 80% */
+    background: rgba(0, 0, 0, 0.8); /* Sets background color with opacity */
+    padding: 20px; /* Adds padding */
+    border-radius: 10px; /* Adds border radius */
 }
 
+/* Styling for services section */
 #services-section {
-    color: white;
-    text-align: center;
-    margin: 40px auto;
-    width: 80%;
-    background: rgba(0, 0, 0, 0.8);
-    padding: 20px;
-    border-radius: 10px;
+    color: white; /* Sets text color to white */
+    text-align: center; /* Centers text horizontally */
+    margin: 40px auto; /* Sets margin */
+    width: 80%; /* Sets width to 80% */
+    background: rgba(0, 0, 0, 0.8); /* Sets background color with opacity */
+    padding: 20px; /* Adds padding */
+    border-radius: 10px; /* Adds border radius */
 }
 
+/* Styling for about section */
 #about-section {
-    color: white;
-    text-align: center;
-    margin: 40px auto;
-    width: 80%;
-    background: rgba(0, 0, 0, 0.8);
-    padding: 20px;
-    border-radius: 10px;
+    color: white; /* Sets text color to white */
+    text-align: center; /* Centers text horizontally */
+    margin: 40px auto; /* Sets margin */
+    width: 80%; /* Sets width to 80% */
+    background: rgba(0, 0, 0, 0.8); /* Sets background color with opacity */
+    padding: 20px; /* Adds padding */
+    border-radius: 10px; /* Adds border radius */
 }
 
+/* Styling for footer */
 footer {
-    background: #343a40;
-    color: #F8F9FA;
-    text-align: center;
-    padding: 4px;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
+    background: #343a40; /* Sets background color */
+    color: #F8F9FA; /* Sets text color */
+    text-align: center; /* Centers text horizontally */
+    padding: 4px; /* Adds padding */
+    position: fixed; /* Fixes the position */
+    bottom: 0; /* Aligns to the bottom */
+    width: 100%; /* Sets width to 100% */
 }

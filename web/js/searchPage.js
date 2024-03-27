@@ -1,21 +1,23 @@
+// Extracting query parameter from the URL
 const params = new URLSearchParams(window.location.search);
 const queryValue = params.get('query');
 
-if (queryValue.length > 0) {
+// Checking if query parameter exists and is not empty
+if (queryValue && queryValue.length > 0) {
     let suggestions = [];
 
+    // Fetching data from API for search
     fetch('/api/search/every/informations')
         .then(response => response.json())
         .then(data => {
-
+            // Iterating through fetched data to find matching suggestions
             data.forEach(band => {
-
                 if (band.name.toLowerCase().includes(queryValue.toLowerCase())) {
                     suggestions.push({
                         name: band.name,
                         type: 'Groupe',
                         image: band.image,
-                        redirectTo: band.id
+                        id: band.id
                     });
                 }
 
@@ -25,7 +27,7 @@ if (queryValue.length > 0) {
                             name: member,
                             type: 'Membre',
                             image: band.image,
-                            redirectTo: band.id
+                            id: band.id
                         });
                     }
                 });
@@ -35,7 +37,7 @@ if (queryValue.length > 0) {
                         name: band.firstAlbum,
                         type: 'FirstAlbum',
                         image: band.image,
-                        redirectTo: band.id
+                        id: band.id
                     });
                 }
 
@@ -44,7 +46,7 @@ if (queryValue.length > 0) {
                         name: band.creationDate.toString(),
                         type: 'CreationDate',
                         image: band.image,
-                        redirectTo: band.id
+                        id: band.id
                     });
                 }
 
@@ -54,13 +56,14 @@ if (queryValue.length > 0) {
                             name: location,
                             type: 'Location',
                             image: band.image,
-                            redirectTo: band.id,
+                            id: band.id,
                         });
                     }
                 });
 
             });
 
+            // Handling case where no results are found
             if (suggestions.length === 0) {
                 let noResults = document.createElement('p');
                 noResults.textContent = 'Aucun résultat trouvé';
@@ -69,19 +72,21 @@ if (queryValue.length > 0) {
                 noResults.style.fontSize = '200%';
                 noResults.style.fontWeight = 'bold';
                 document.querySelector('.cards-grid').appendChild(noResults);
-            }else{
+            } else {
+                // Displaying the search results
                 displayedResults(suggestions);
             }
         })
         .catch(error => console.error('Error:', error));
 }
 
+// Function to display search results
 function displayedResults(filteredResults) {
     let cardsGrid = document.querySelector('.cards-grid');
     cardsGrid.innerHTML = '';
 
     filteredResults.forEach(artist => {
-
+        // Creating elements for displaying search results
         let cardContainer = document.createElement('div');
         cardContainer.className = 'card-container';
 
@@ -104,6 +109,7 @@ function displayedResults(filteredResults) {
         let artistName = document.createElement('p');
         artistName.className = 'artist-name';
 
+        // Constructing artist name based on type
         if (artist.type === "Membre") {
             artistName.textContent = artist.name + " (Membre)";
         } else if (artist.type === "Groupe") {
@@ -112,20 +118,17 @@ function displayedResults(filteredResults) {
             artistName.textContent = artist.name + " (Premier Album)";
         } else if (artist.type === "CreationDate") {
             artistName.textContent = artist.name + " (Date de Création)";
-        }else if (artist.type === "Location") {
+        } else if (artist.type === "Location") {
             artistName.textContent = artist.name + " (Lieu)";
         }
 
+        // Appending elements to construct search result card
         cardImageDiv.appendChild(image);
-
         cardContent.appendChild(artistName);
-
         cardLink.appendChild(cardImageDiv);
         cardLink.appendChild(artistLine);
         cardLink.appendChild(cardContent);
-
         cardContainer.appendChild(cardLink);
-
         cardsGrid.appendChild(cardContainer);
     });
 }

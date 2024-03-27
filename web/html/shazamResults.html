@@ -2,52 +2,72 @@
 <html lang="fr">
 
 <head>
+    <!-- Meta charset declaration -->
     <meta charset="UTF-8">
+    <!-- Title of the webpage -->
     <title>Sinfonia</title>
+    <!-- Link to the website's favicon -->
     <link rel="icon" href="../resourcesWeb/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="../css/shazamResults.css">
+    <!-- Link to the CSS file for header styling -->
     <link rel="stylesheet" href="../css/header.css">
+    <!-- Link to the CSS file for shazamResults styling -->
+    <link rel="stylesheet" href="../css/shazamResults.css">
+    <!-- Script source for Shazam functionality -->
     <script src="../js/shazam.js"></script>
+    <!-- Script source for search bar functionality -->
     <script src="../js/searchBar.js"></script>
+    <!-- Meta tag for responsive viewport -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <header>
+    <!-- Link to the homepage with logo image -->
     <a href="index.html" id="logo-link">
         <img src="../resourcesWeb/logo.png" alt="Logo Sinfonia" id="logo">
     </a>
+    <!-- Search box with form for searching -->
     <div id="search-box" class="search-box">
         <form action="/searchPage" method="GET" class="search-form">
             <label>
+                <!-- Input field for search query -->
                 <input type="text" id="search-input" required name="query" class="search-input" onkeyup="searchInfos()" placeholder="Rechercher...">
+                <!-- Submit button for search -->
                 <button type="submit" class="search-button">Rechercher</button>
             </label>
         </form>
+        <!-- Suggestions dropdown for search -->
         <div id="suggestions" class="suggestions"></div>
     </div>
+    <!-- Navigation menu -->
     <nav>
         <ul>
+            <!-- Navigation links -->
             <a href="index.html">Accueil</a>
             <a href="gallery.html">Galerie</a>
             <a href="shazamPage.html">Shazam</a>
-            <a href="#">Bouton 4</a>
         </ul>
     </nav>
 </header>
 
 <body>
 
+<!-- Loading screen -->
 <div id="loadingScreen">
     <div>
+        <!-- Loading message -->
         <h1>Recherche...</h1>
     </div>
+    <!-- Loader animation -->
     <div class="loader"></div>
 </div>
 
+<!-- Container for information -->
 <div id="informations-container">
+    <!-- Container for artists' information -->
     <div id="text-artists-container">
         <div id="artists-container"></div>
     </div>
+    <!-- Container for tracks' information -->
     <div id="text-tracks-container">
         <div id="tracks-container"></div>
     </div>

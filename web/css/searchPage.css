@@ -1,63 +1,72 @@
+/* Styling for pre-query container */
 #pre-query {
-    margin-top: 0.5%;
-    margin-bottom: 1%;
-    display: flex;
-    width: 100%;
-    justify-content: center;
+    margin-top: 0.5%; /* Sets top margin to 0.5% */
+    margin-bottom: 1%; /* Sets bottom margin to 1% */
+    display: flex; /* Uses flexbox layout */
+    width: 100%; /* Sets width to 100% */
+    justify-content: center; /* Centers items horizontally */
 }
 
-#query-container{
-    width: 35%;
-    display: flex;
-    justify-content: center;
-    color: #ffffff;
+/* Styling for query container */
+#query-container {
+    width: 35%; /* Sets width to 35% */
+    display: flex; /* Uses flexbox layout */
+    justify-content: center; /* Centers items horizontally */
+    color: #ffffff; /* Sets text color to white */
 }
 
+/* Styling for cards grid */
 .cards-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-content: stretch;
-    flex-direction: row-reverse;
+    display: flex; /* Uses flexbox layout */
+    flex-wrap: wrap; /* Allows wrapping */
+    justify-content: center; /* Centers items horizontally */
+    align-content: stretch; /* Stretches items to fill container */
+    flex-direction: row-reverse; /* Reverses direction of flex items */
 }
 
+/* Styling for card container */
 .card-container {
-    background-color: #102D44FF;
-    flex: 0 0 32%;
-    box-sizing: border-box;
-    margin: 10px;
-    display: flex;
-    flex-direction: column;
-    border: 3px solid #b7913e;
+    background-color: #102D44FF; /* Sets background color to dark blue */
+    flex: 0 0 32%; /* Sets flex properties */
+    box-sizing: border-box; /* Sets box-sizing to border-box */
+    margin: 10px; /* Sets margin to 10px */
+    display: flex; /* Uses flexbox layout */
+    flex-direction: column; /* Arranges items vertically */
+    border: 3px solid #b7913e; /* Sets border to 3px solid gold */
 }
 
+/* Styling for card content */
 .card-content {
-    padding: 15px;
-    text-align: center;
-    background-color: #102d44;
+    padding: 15px; /* Adds padding */
+    text-align: center; /* Centers text */
+    background-color: #102d44; /* Sets background color to dark blue */
 }
 
+/* Styling for card image */
 .card-image {
-    margin-top: 20px;
-    margin-bottom: 30px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    margin-top: 20px; /* Sets top margin to 20px */
+    margin-bottom: 30px; /* Sets bottom margin to 30px */
+    width: 100%; /* Sets width to 100% */
+    display: flex; /* Uses flexbox layout */
+    justify-content: center; /* Centers items horizontally */
+    align-items: center; /* Centers items vertically */
 }
 
+/* Styling for card image */
 .card-image img {
-    height: auto;
-    border-radius: 100%;
+    height: auto; /* Sets height to auto */
+    border-radius: 100%; /* Rounds image to a circle */
 }
 
-.artist-line{
-    height: 2px;
-    background-color: #b7913e;
-    margin: 5px 0;
+/* Styling for artist line */
+.artist-line {
+    height: 2px; /* Sets height to 2px */
+    background-color: #b7913e; /* Sets background color to gold */
+    margin: 5px 0; /* Sets margin */
 }
 
+/* Styling for artist name */
 .artist-name {
-    font-size: 20px;
-    color: #b7913e;
+    font-size: 20px; /* Sets font size to 20px */
+    color: #b7913e; /* Sets text color to gold */
 }

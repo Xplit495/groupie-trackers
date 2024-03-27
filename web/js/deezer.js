@@ -1,31 +1,40 @@
+// Extracting parameters from the URL query string
 const params = new URLSearchParams(window.location.search);
+
+// Getting the value of the 'id' parameter from the URL query string
 const artistId = params.get('id');
 
+// Fetching data from a Deezer API endpoint using the artistId
 fetch(`/api/deezer?artistId=${artistId}`)
-    .then(response => response.text())
+    .then(response => response.text()) // Parsing the response as text
     .then(artistId => {
+        // Callback function handling the successful response
 
-            let deezerWidgetContainer = document.querySelector('.deezer-widget-container');
+        // Finding the container element for the Deezer widget
+        let deezerWidgetContainer = document.querySelector('.deezer-widget-container');
 
-            const deezerWidget = document.createElement('div');
-            deezerWidget.id = 'deezer-widget';
+        // Creating a container div for the Deezer widget
+        const deezerWidget = document.createElement('div');
+        deezerWidget.id = 'deezer-widget';
 
-            const iframe = document.createElement('iframe');
-            iframe.setAttribute('title', 'deezer-widget');
-            iframe.src = `https://widget.deezer.com/widget/dark/artist/${artistId}/top_tracks`;
-            iframe.width = "500";
-            iframe.height = "690";
-            iframe.frameBorder = "0";
-            iframe.allowTransparency = "true";
-            iframe.allow = "encrypted-media; clipboard-write";
+        // Creating an iframe element for the Deezer widget
+        const iframe = document.createElement('iframe');
+        iframe.setAttribute('title', 'deezer-widget'); // Setting title attribute
+        iframe.src = `https://widget.deezer.com/widget/dark/artist/${artistId}/top_tracks`; // Setting source URL
+        iframe.width = "500"; // Setting width
+        iframe.height = "690"; // Setting height
+        iframe.frameBorder = "0"; // Setting frameborder
+        iframe.allowTransparency = "true"; // Allowing transparency
+        iframe.allow = "encrypted-media; clipboard-write"; // Setting allow attribute
 
-            deezerWidget.appendChild(iframe);
+        // Appending iframe to the Deezer widget container
+        deezerWidget.appendChild(iframe);
 
-            deezerWidgetContainer.appendChild(deezerWidget);
+        // Appending the Deezer widget container to the document
+        deezerWidgetContainer.appendChild(deezerWidget);
 
     })
-
     .catch(error => {
-            console.error('Error:', error);
+        // Error handling in case the fetch operation fails
+        console.error('Error:', error);
     });
-

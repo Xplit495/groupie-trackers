@@ -1,98 +1,112 @@
-.informations-grid{
-    margin-left: 5%;
-    display: flex;
-    align-items: center;
+/* Grid layout for artist information */
+.informations-grid {
+    margin-left: 5%; /* Sets left margin to 5% */
+    display: flex; /* Uses flexbox layout */
+    align-items: center; /* Vertically centers items */
 }
 
+/* Styling for artist details container */
 .artist-details {
-    width: 155%;
-    margin-top: 3%;
-    margin-bottom: 3%;
-    padding: 20px;
-    background-color: #102d44;
-    border-radius: 10px;
+    width: 155%; /* Sets width to 155% of the parent container */
+    margin-top: 3%; /* Sets top margin to 3% */
+    margin-bottom: 3%; /* Sets bottom margin to 3% */
+    padding: 20px; /* Adds padding of 20 pixels */
+    background-color: #102d44; /* Sets background color to dark blue */
+    border-radius: 10px; /* Rounds corners with a radius of 10 pixels */
 }
 
+/* Styling for artist image container */
 .artist-image {
-    text-align: center;
-    margin-bottom: 20px;
+    text-align: center; /* Centers text */
+    margin-bottom: 20px; /* Sets bottom margin to 20 pixels */
 }
 
+/* Styling for artist image */
 .artist-image img {
-    margin-top: 15px;
-    border-radius: 50%;
-    width: 250px;
-    height: auto;
-    border: 3px solid #ffc107;
+    margin-top: 15px; /* Sets top margin to 15 pixels */
+    border-radius: 50%; /* Rounds the image to a circle */
+    width: 250px; /* Sets width to 250 pixels */
+    height: auto; /* Maintains aspect ratio */
+    border: 3px solid #ffc107; /* Adds a 3 pixel solid border with a gold color */
 }
 
+/* Styling for album link */
 #album {
-    color: #ffffff;
-    text-decoration-line: underline;
+    color: #ffffff; /* Sets text color to white */
+    text-decoration-line: underline; /* Underlines text */
 }
 
+/* Styling for artist name, members, creation date, and first album */
 .artist-name,
 .members,
 .creation-date,
 .first-album {
-    margin-bottom: 10px;
-    padding: 5px;
-    border-bottom: 2px solid #ffc107;
+    margin-bottom: 10px; /* Sets bottom margin to 10 pixels */
+    padding: 5px; /* Adds padding of 5 pixels */
+    border-bottom: 2px solid #ffc107; /* Adds a 2 pixel solid border at the bottom with a gold color */
 }
 
+/* Styling for artist name */
 .artist-name {
-    font-size: 2em;
-    color: #ffc107;
+    font-size: 2em; /* Sets font size to 2em */
+    color: #ffc107; /* Sets text color to gold */
 }
 
+/* Styling for members, creation date, and first album */
 .members,
 .creation-date,
 .first-album {
-    font-size: 1.2em;
-    color: #ddd;
+    font-size: 1.2em; /* Sets font size to 1.2em */
+    color: #ddd; /* Sets text color to light gray */
 }
 
-.information{
-    text-align: center;
+/* Styling for information text alignment */
+.information {
+    text-align: center; /* Centers text */
 }
 
+/* Styling for Deezer widget container */
 .deezer-widget-container {
-    margin-left: 5%;
-    display: flex;
-    width: 100%;
+    margin-left: 5%; /* Sets left margin to 5% */
+    display: flex; /* Uses flexbox layout */
+    width: 100%; /* Sets width to 100% */
 }
 
-#deezer-widget{
-    width: 100%;
+/* Styling for Deezer widget */
+#deezer-widget {
+    width: 100%; /* Sets width to 100% */
 }
 
-#mapContainer{
-    margin-bottom: 20px;
-    display: flex;
-    flex-wrap: wrap;
-    align-content: center;
-    flex-direction: column;
+/* Styling for map container */
+#mapContainer {
+    margin-bottom: 20px; /* Sets bottom margin to 20 pixels */
+    display: flex; /* Uses flexbox layout */
+    flex-wrap: wrap; /* Allows items to wrap to the next line */
+    align-content: center; /* Centers items vertically */
+    flex-direction: column; /* Arranges items vertically */
 }
 
+/* Styling for map */
 #map {
-    height: 500px;
-    width: 90%;
-    border-radius: 20px;
+    height: 500px; /* Sets height to 500 pixels */
+    width: 90%; /* Sets width to 90% */
+    border-radius: 20px; /* Rounds corners with a radius of 20 pixels */
 }
 
+/* Styling for Google Maps info window content */
 .gm-style .gm-style-iw-c {
-    position: absolute;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-    overflow: hidden;
-    top: 0;
-    left: 0;
-    text-align-last: center;
-    -webkit-transform: translate3d(-50%, -100%, 0);
-    transform: translate3d(-50%, -100%, 0);
-    background-color: white;
-    border-radius: 8px;
-    padding: 12px;
-    -webkit-box-shadow: 0 2px 7px 1px rgba(0,0,0,.3);
-    box-shadow: 0 2px 7px 1px rgba(0,0,0,.3);
+    position: absolute; /* Sets position to absolute */
+    -webkit-box-sizing: border-box; /* Sets box sizing */
+    box-sizing: border-box; /* Sets box sizing */
+    overflow: hidden; /* Hides overflow */
+    top: 0; /* Sets top position to 0 */
+    left: 0; /* Sets left position to 0 */
+    text-align-last: center; /* Aligns text last (for IE) */
+    -webkit-transform: translate3d(-50%, -100%, 0); /* Transforms position */
+    transform: translate3d(-50%, -100%, 0); /* Transforms position */
+    background-color: white; /* Sets background color to white */
+    border-radius: 8px; /* Rounds corners with a radius of 8 pixels */
+    padding: 12px; /* Adds padding of 12 pixels */
+    -webkit-box-shadow: 0 2px 7px 1px rgba(0,0,0,.3); /* Adds box shadow */
+    box-shadow: 0 2px 7px 1px rgba(0,0,0,.3); /* Adds box shadow */
 }

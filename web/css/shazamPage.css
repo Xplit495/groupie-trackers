@@ -1,32 +1,38 @@
-#research{
-    margin-top: 16%;
-    text-align: center;
+/* Styling for research section */
+#research {
+    margin-top: 16%; /* Sets top margin to 16% */
+    text-align: center; /* Centers text horizontally */
 }
 
-#research h2{
-    margin-bottom: 2%;
-    color: white;
+/* Styling for research section heading */
+#research h2 {
+    margin-bottom: 2%; /* Sets bottom margin to 2% */
+    color: white; /* Sets text color to white */
 }
 
-#shazam-input{
-    border: none;
-    width: 15%;
-    padding: 0.5%;
+/* Styling for Shazam input */
+#shazam-input {
+    border: none; /* Removes border */
+    width: 15%; /* Sets width to 15% */
+    padding: 0.5%; /* Adds padding */
 }
 
-#shazam-input:focus{
-    outline: none;
+/* Styling for focused Shazam input */
+#shazam-input:focus {
+    outline: none; /* Removes outline */
 }
 
-#shazam-search-button{
-    background-color: #b7913e;
-    color: white;
-    margin-left: -1%;
-    padding: 0.5%;
-    border: none;
+/* Styling for Shazam search button */
+#shazam-search-button {
+    background-color: #152d45; /* Sets background color */
+    color: #b7913e; /* Sets text color */
+    margin-left: -1%; /* Sets left margin to -1% */
+    padding: 0.5%; /* Adds padding */
+    border: none; /* Removes border */
 }
 
-#shazam-search-button:hover{
-    cursor: pointer;
-    background-color: #6e5629;
+/* Styling for hovered Shazam search button */
+#shazam-search-button:hover {
+    cursor: pointer; /* Changes cursor to pointer */
+    background-color: #6e5629; /* Sets background color */
 }

@@ -1,112 +1,112 @@
+/* Grid layout for cards */
 .cards-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-content: stretch;
-    flex-direction: row-reverse;
+    display: flex; /* Uses flexbox layout */
+    flex-wrap: wrap; /* Allows items to wrap to the next line */
+    justify-content: center; /* Centers items horizontally */
+    align-content: stretch; /* Stretches items to fit container */
+    flex-direction: row-reverse; /* Arranges items in a row and reverses the order */
 }
 
+/* Styling for card container */
 .card-container {
-    background-color: #102D44FF;
-    flex: 0 0 32%;
-    box-sizing: border-box;
-    margin: 10px;
-    display: flex;
-    flex-direction: column;
-    border: 3px solid #b7913e;
+    background-color: #102D44FF; /* Sets background color to dark blue */
+    flex: 0 0 32%; /* Sets initial, grow, and shrink to 0, and basis to 32% */
+    box-sizing: border-box; /* Uses border-box box sizing */
+    margin: 10px; /* Sets margin to 10 pixels */
+    display: flex; /* Uses flexbox layout */
+    flex-direction: column; /* Arranges items vertically */
+    border: 3px solid #b7913e; /* Adds a 3 pixel solid border with a gold color */
 }
 
+/* Styling for card content */
 .card-content {
-    padding: 15px;
-    text-align: center;
-    background-color: #102d44;
+    padding: 15px; /* Adds padding of 15 pixels */
+    text-align: center; /* Centers text */
+    background-color: #102d44; /* Sets background color to dark blue */
 }
 
+/* Styling for card image container */
 .card-image {
-    margin-top: 20px;
-    margin-bottom: 30px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    margin-top: 20px; /* Sets top margin to 20 pixels */
+    margin-bottom: 30px; /* Sets bottom margin to 30 pixels */
+    width: 100%; /* Sets width to 100% */
+    display: flex; /* Uses flexbox layout */
+    justify-content: center; /* Centers items horizontally */
+    align-items: center; /* Centers items vertically */
 }
 
+/* Styling for card image */
 .card-image img {
-    height: auto;
-    border-radius: 100%;
+    height: auto; /* Maintains aspect ratio */
+    border-radius: 100%; /* Rounds the image to a circle */
 }
 
-.artist-line{
-    height: 2px;
-    background-color: #b7913e;
-    margin: 5px 0;
+/* Styling for artist line separator */
+.artist-line {
+    height: 2px; /* Sets height to 2 pixels */
+    background-color: #b7913e; /* Sets background color to gold */
+    margin: 5px 0; /* Sets margin to 5 pixels top and bottom, 0 pixels left and right */
 }
 
+/* Styling for artist name */
 .artist-name {
-    font-size: 20px;
-    color: #b7913e;
+    font-size: 20px; /* Sets font size to 20 pixels */
+    color: #b7913e; /* Sets text color to gold */
 }
 
-#pre-filter-container{
-    padding: 1% 1% 0.5%;
-    display: flex;
-    justify-content: center;
-}
-#filter-container{
-    border: 2px solid #b7913e;
-    padding: 1%;
-    width: 49%;
-    display: flex;
-    background-color: #102d44;
-    justify-content: center;
+/* Styling for pre-filter container */
+#pre-filter-container {
+    padding: 1% 1% 0.5%; /* Adds padding */
+    display: flex; /* Uses flexbox layout */
+    justify-content: center; /* Centers items horizontally */
 }
 
-#filter{
-    text-align: center;
-    width: 90%;
+/* Styling for filter container */
+#filter-container {
+    border: 2px solid #b7913e; /* Adds a 2 pixel solid border with a gold color */
+    padding: 1%; /* Adds padding */
+    width: 49%; /* Sets width to 49% */
+    display: flex; /* Uses flexbox layout */
+    background-color: #102d44; /* Sets background color to dark blue */
+    justify-content: center; /* Centers items horizontally */
 }
 
-#text{
-    color: #b7913e;
-    margin-bottom: 2%;
+/* Styling for filter input */
+#filter {
+    text-align: center; /* Centers text */
+    width: 90%; /* Sets width to 90% */
 }
 
-#filter-creation-date{
-    color: grey;
-    background-color: #102d44;
-    text-align: center;
-    padding: 1%;
-    border-radius: 6%;
+/* Styling for text */
+#text {
+    color: #b7913e; /* Sets text color to gold */
+    margin-bottom: 2%; /* Sets bottom margin to 2% */
 }
 
-#filter-first-album-date{
-    color: grey;
-    background-color: #102d44;
-    text-align: center;
-    padding: 1%;
-    border-radius: 6%;
+/* Styling for filter options */
+#filter-creation-date,
+#filter-first-album-date,
+#filter-concert-locations {
+    color: grey; /* Sets text color to grey */
+    background-color: #102d44; /* Sets background color to dark blue */
+    text-align: center; /* Centers text */
+    padding: 1%; /* Adds padding */
+    border-radius: 6%; /* Rounds corners with a radius of 6% */
 }
 
 #filter-number-of-members{
-    color: grey;
-    background-color: #102d44;
-    text-align: center;
-    padding: 1%;
-    width: 28%;
-    border-radius: 6%;
+    width: 27%; /* Sets width to 27% */
+    color: grey; /* Sets text color to grey */
+    background-color: #102d44; /* Sets background color to dark blue */
+    text-align: center; /* Centers text */
+    padding: 1%; /* Adds padding */
+    border-radius: 6%; /* Rounds corners with a radius of 6% */
 }
 
-#filter-concert-locations{
-    color: grey;
-    background-color: #102d44;
-    text-align: center;
-    padding: 1%;
-    border-radius: 6%;
-}
-
-#reset-filters{
-    background-color: #102d44;
-    color: #b7913e;
-    padding: 1%;
-    margin-top: 3%;
+/* Styling for reset filters button */
+#reset-filters {
+    background-color: #102d44; /* Sets background color to dark blue */
+    color: #b7913e; /* Sets text color to gold */
+    padding: 1%; /* Adds padding */
+    margin-top: 3%; /* Sets top margin to 3% */
 }

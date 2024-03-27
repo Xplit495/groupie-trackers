@@ -2,41 +2,57 @@
 <html lang="fr">
 
 <head>
+    <!-- Meta charset declaration -->
     <meta charset="UTF-8">
+    <!-- Title of the webpage -->
     <title>Sinfonia</title>
+    <!-- Link to the website's favicon -->
     <link rel="icon" href="../resourcesWeb/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="../css/artists.css">
+    <!-- Link to the CSS file for header styling -->
     <link rel="stylesheet" href="../css/header.css">
+    <!-- Link to the CSS file for artists styling -->
+    <link rel="stylesheet" href="../css/artists.css">
+    <!-- Script source for search bar functionality -->
     <script src="../js/searchBar.js"></script>
+    <!-- Script source for maps functionality -->
     <script src="../js/maps.js"></script>
+    <!-- Script source for Google Maps API with async loading and callback function -->
     <script async defer
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDt61Vo8K7TRmaP-Yv8eetop9Qphh0-0RE&loading=async&callback=initMap">
     </script>
+    <!-- Script source for Deezer functionality -->
     <script src="../js/deezer.js"></script>
+    <!-- Meta tag for responsive viewport -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
 
 <header>
+    <!-- Link to the homepage with logo image -->
     <a href="index.html" id="logo-link">
         <img src="../resourcesWeb/logo.png" alt="Logo Sinfonia" id="logo">
     </a>
+    <!-- Search box with form for searching -->
     <div id="search-box" class="search-box">
         <form action="/searchPage" method="GET" class="search-form">
             <label>
+                <!-- Input field for search query -->
                 <input type="text" id="search-input" required name="query" class="search-input" onkeyup="searchInfos()" placeholder="Rechercher...">
+                <!-- Submit button for search -->
                 <button type="submit" class="search-button">Rechercher</button>
             </label>
         </form>
+        <!-- Suggestions dropdown for search -->
         <div id="suggestions" class="suggestions"></div>
     </div>
+    <!-- Navigation menu -->
     <nav>
         <ul>
+            <!-- Navigation links -->
             <a href="index.html">Accueil</a>
             <a href="gallery.html">Galerie</a>
             <a href="shazamPage.html">Shazam</a>
-            <a href="#">Bouton 4</a>
         </ul>
     </nav>
 </header>
@@ -45,27 +61,34 @@
     <div class="artist-details">
 
         <div class="artist-image">
-            <h2 id = "album">Pochette de l'album</h2>
+            <!-- Heading for album cover -->
+            <h2 id="album">Pochette de l'album</h2>
+            <!-- Image tag for album cover -->
             <img src="{{.Image}}" alt="Photo de {{.Name}}" />
         </div>
 
         <div class="information">
+            <!-- Heading for artist name -->
             <h2 class="artist-name">Nom du groupe : {{.Name}}</h2>
+            <!-- Heading for members -->
             <h1 class="members">Membres :<br><br>{{.MemberBis}}</h1>
+            <!-- Heading for creation date -->
             <h1 class="creation-date">Date de création :<br><br>{{.CreationDate}}</h1>
+            <!-- Heading for first album -->
             <h1 class="first-album">Premier album :<br><br>{{.FirstAlbum}}</h1>
         </div>
 
     </div>
 
+    <!-- Container for Deezer widget -->
     <div class="deezer-widget-container"></div>
 
 </div>
 
+<!-- Container for Google Maps -->
 <div id="mapContainer">
     <div id="map"></div>
 </div>
-
 
 </body>
 </html>

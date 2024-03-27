@@ -2,76 +2,102 @@
 <html lang="fr">
 
 <head>
+    <!-- Meta charset declaration -->
     <meta charset="UTF-8">
+    <!-- Title of the webpage -->
     <title>Sinfonia</title>
+    <!-- Link to the website's favicon -->
     <link rel="icon" href="../resourcesWeb/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="../css/gallery.css">
+    <!-- Link to the CSS file for header styling -->
     <link rel="stylesheet" href="../css/header.css">
+    <!-- Link to the CSS file for gallery styling -->
+    <link rel="stylesheet" href="../css/gallery.css">
+    <!-- Script source for search bar functionality -->
     <script src="../js/searchBar.js"></script>
-    <script src="../js/filter.js"></script>
+    <!-- Script source for filters functionality -->
+    <script src="../js/filters.js"></script>
+    <!-- Meta tag for responsive viewport -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
 
 <header>
+    <!-- Link to the homepage with logo image -->
     <a href="index.html" id="logo-link">
         <img src="../resourcesWeb/logo.png" alt="Logo Sinfonia" id="logo">
     </a>
+    <!-- Search box with form for searching -->
     <div id="search-box" class="search-box">
         <form action="/searchPage" method="GET" class="search-form">
             <label>
+                <!-- Input field for search query -->
                 <input type="text" id="search-input" required name="query" class="search-input" onkeyup="searchInfos()" placeholder="Rechercher...">
+                <!-- Submit button for search -->
                 <button type="submit" class="search-button">Rechercher</button>
             </label>
         </form>
+        <!-- Suggestions dropdown for search -->
         <div id="suggestions" class="suggestions"></div>
     </div>
+    <!-- Navigation menu -->
     <nav>
         <ul>
+            <!-- Navigation links -->
             <a href="index.html">Accueil</a>
             <a href="gallery.html">Galerie</a>
             <a href="shazamPage.html">Shazam</a>
-            <a href="#">Bouton 4</a>
         </ul>
     </nav>
 </header>
 
+<!-- Container for pre-filter options -->
 <div id="pre-filter-container">
     <div id="filter-container">
         <div id="filter">
 
+            <!-- Heading for filters -->
             <h2 id="text">Filtres :</h2>
 
+            <!-- Input field for filtering by creation date -->
             <label>
                 <input type="text" id="filter-creation-date" placeholder="Date de création">
             </label>
 
+            <!-- Input field for filtering by first album date -->
             <label>
                 <input type="date" id="filter-first-album-date">
             </label>
 
+            <!-- Input field for filtering by number of members -->
             <label>
                 <input type="number" id="filter-number-of-members"  max="8" min="1" placeholder="Nombre de membres">
             </label>
 
+            <!-- Input field for filtering by concert locations -->
             <label>
                 <input type="text" id="filter-concert-locations" placeholder="Lieux de concerts">
             </label>
 
+            <!-- Button to reset filters -->
             <button type="button" id="reset-filters">Réinitialiser</button>
         </div>
     </div>
 </div>
 
+<!-- Container for artist cards -->
 <div class="cards-grid">
     {{range .}}
     <div class="card-container">
+        <!-- Link to artist details page -->
         <a href="artists.html?id={{.ID}}">
+            <!-- Image container for artist -->
             <div class="card-image">
                 <img src="{{.Image}}" alt="Photo de {{.Name}}">
             </div>
+            <!-- Horizontal line -->
             <div class="artist-line"></div>
+            <!-- Container for artist name -->
             <div class="card-content">
                 <p class="artist-name">{{.Name}}</p>
             </div>

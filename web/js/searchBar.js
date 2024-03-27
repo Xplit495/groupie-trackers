@@ -1,3 +1,4 @@
+// Event listener to close the suggestions dropdown when a click occurs outside the search box or suggestions
 document.addEventListener('click', function(event) {
     let isClickInsideSearchBox = document.getElementById('search-box').contains(event.target);
     let isClickInsideSuggestions = document.getElementById('suggestions').contains(event.target);
@@ -7,17 +8,18 @@ document.addEventListener('click', function(event) {
     }
 });
 
+// Function to perform a search and display suggestions based on user input
 function searchInfos() {
     let input = document.getElementById('search-input').value;
     if (input.length > 0) {
         let suggestions = [];
 
+        // Fetching data from API for search
         fetch('/api/search/every/informations')
             .then(response => response.json())
             .then(data => {
-
+                // Iterating through fetched data to find matching suggestions
                 data.forEach(band => {
-
                     if (band.name.toLowerCase().includes(input.toLowerCase())) {
                         suggestions.push({
                             name: band.name,
@@ -66,9 +68,9 @@ function searchInfos() {
                             });
                         }
                     });
-
                 });
 
+                // Displaying the suggestions
                 showSuggestions(suggestions);
             })
             .catch(error => console.error('Error:', error));
@@ -77,11 +79,13 @@ function searchInfos() {
     }
 }
 
+// Function to display search suggestions
 function showSuggestions(suggestions) {
     let suggestionsContainer = document.getElementById('suggestions');
     suggestionsContainer.innerHTML = '';
 
     if (suggestions.length > 0) {
+        // Adding suggestion elements to the suggestions container
         suggestions.forEach(suggestion => {
             let suggestionElement = document.createElement('div');
             suggestionElement.classList.add('suggestion-item');
@@ -97,6 +101,7 @@ function showSuggestions(suggestions) {
             let suggestionName = document.createElement('p');
             suggestionName.classList.add('name-artist');
 
+            // Constructing suggestion text based on type
             if (suggestion.type === "Membre") {
                 suggestionName.textContent = suggestion.name + " (Membre)";
             } else if (suggestion.type === "Groupe") {
@@ -105,12 +110,13 @@ function showSuggestions(suggestions) {
                 suggestionName.textContent = suggestion.name + " (Premier Album)";
             } else if (suggestion.type === "CreationDate") {
                 suggestionName.textContent = suggestion.name + " (Date de Création)";
-            }else if (suggestion.type === "Location") {
+            } else if (suggestion.type === "Location") {
                 suggestionName.textContent = suggestion.name + " (Lieu)";
             }
 
             suggestionElement.appendChild(suggestionName);
 
+            // Adding click event listener to redirect user on suggestion click
             suggestionElement.addEventListener('click', function() {
                 let redirectId = suggestion.redirectTo ? suggestion.redirectTo : suggestion.id;
                 window.location.href = "/artists.html?id=" + redirectId;

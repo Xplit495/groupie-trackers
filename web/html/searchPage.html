@@ -2,35 +2,49 @@
 <html lang="fr">
 
 <head>
+    <!-- Meta charset declaration -->
     <meta charset="UTF-8">
+    <!-- Title of the webpage -->
     <title>Sinfonia</title>
+    <!-- Link to the website's favicon -->
     <link rel="icon" href="../resourcesWeb/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="../css/searchPage.css">
+    <!-- Link to the CSS file for header styling -->
     <link rel="stylesheet" href="../css/header.css">
+    <!-- Link to the CSS file for searchPage styling -->
+    <link rel="stylesheet" href="../css/searchPage.css">
+    <!-- Script source for search bar functionality -->
     <script src="../js/searchBar.js"></script>
+    <!-- Script source for searchPage functionality -->
     <script src="../js/searchPage.js"></script>
+    <!-- Meta tag for responsive viewport -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <header>
+    <!-- Link to the homepage with logo image -->
     <a href="index.html" id="logo-link">
         <img src="../resourcesWeb/logo.png" alt="Logo Sinfonia" id="logo">
     </a>
+    <!-- Search box with form for searching -->
     <div id="search-box" class="search-box">
         <form action="/searchPage" method="GET" class="search-form">
             <label>
+                <!-- Input field for search query -->
                 <input type="text" id="search-input" required name="query" class="search-input" onkeyup="searchInfos()" placeholder="Rechercher...">
+                <!-- Submit button for search -->
                 <button type="submit" class="search-button">Rechercher</button>
             </label>
         </form>
+        <!-- Suggestions dropdown for search -->
         <div id="suggestions" class="suggestions"></div>
     </div>
+    <!-- Navigation menu -->
     <nav>
         <ul>
+            <!-- Navigation links -->
             <a href="index.html">Accueil</a>
             <a href="gallery.html">Galerie</a>
             <a href="shazamPage.html">Shazam</a>
-            <a href="#">Bouton 4</a>
         </ul>
     </nav>
 </header>
@@ -38,9 +52,11 @@
 <body>
 
 <div id="pre-query">
+    <!-- Heading for pre-query section -->
     <h1 id="query-container">Recherche pour : {{.QueryValue}}</h1>
 </div>
 
+<!-- Container for search results -->
 <div class="cards-grid"></div>  <!-- J'adore le JS <3 -->
 
 </body>

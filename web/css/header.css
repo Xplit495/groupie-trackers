@@ -1,125 +1,146 @@
+/* Import Google Fonts Montserrat with weights 400 and 700 */
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap');
 
+/* Apply Montserrat font to all elements */
 * {
     font-family: 'Montserrat', sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+    margin: 0; /* Reset margin */
+    padding: 0; /* Reset padding */
+    box-sizing: border-box; /* Set box-sizing to border-box */
 }
 
-body{
-    background-color: #4b4b4b;
+/* Styling for body */
+body {
+    background-color: #4b4b4b; /* Sets background color to dark grey */
 }
 
+/* Styling for header */
 header {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    background-color: #152d45;
-
+    display: flex; /* Uses flexbox layout */
+    align-items: center; /* Aligns items vertically */
+    justify-content: center; /* Centers items horizontally */
+    color: white; /* Sets text color to white */
+    background-color: #152d45; /* Sets background color to dark blue */
 }
 
+/* Styling for logo */
 #logo {
-    height: 6vh;
-    margin-left: 5%;
+    width: 100%; /* Sets width to 100% */
+    margin-left: 5%; /* Sets left margin to 5% */
 }
 
+/* Styling for logo link hover effect */
 #logo-link:hover {
-    opacity: 0.8;
+    opacity: 0.8; /* Sets opacity to 0.8 on hover */
 }
+
+/* Styling for navigation */
 nav {
-    width: 100%;
-    margin-bottom: 2%;
-    margin-top: 3%;
+    width: 100%; /* Sets width to 100% */
+    margin-bottom: 2%; /* Sets bottom margin to 2% */
+    margin-top: 3%; /* Sets top margin to 3% */
 }
 
+/* Styling for navigation list */
 nav ul {
-    margin-left: -4%;
-    margin-bottom: 1.5%;
-    display: flex;
-    justify-content: space-around;
-    width: 100%;
+    margin-left: -4%; /* Adjusts left margin */
+    margin-bottom: 1.5%; /* Sets bottom margin to 1.5% */
+    display: flex; /* Uses flexbox layout */
+    justify-content: space-around; /* Spaces items evenly */
+    width: 100%; /* Sets width to 100% */
 }
 
-a:link, a:visited {
-    color: #b79140;
-    text-decoration: none;
+/* Styling for anchor links */
+a:link,
+a:visited {
+    color: #b79140; /* Sets text color for links */
+    text-decoration: none; /* Removes underline */
 }
 
-a:hover, a:active {
-    color: #6e5629;
-    text-decoration: underline;
+/* Styling for anchor links hover and active states */
+a:hover,
+a:active {
+    color: #6e5629; /* Sets text color for links on hover or active */
+    text-decoration: underline; /* Underlines text on hover or active */
 }
 
+/* Styling for search box */
 #search-box {
-    margin-left: 2%;
-    position: relative;
-    text-align: center;
-    width: 50%;
+    margin-left: 2%; /* Sets left margin to 2% */
+    position: relative; /* Sets position to relative */
+    text-align: center; /* Centers text */
+    width: 50%; /* Sets width to 50% */
 }
 
+/* Styling for search input */
 #search-input {
-    color: #b7913e;
-    width: 50%;
-    padding: 2%;
-    margin-right: -5px;
-    border: none;
+    color: #b7913e; /* Sets text color to gold */
+    width: 50%; /* Sets width to 50% */
+    padding: 2%; /* Adds padding */
+    margin-right: -5px; /* Adjusts right margin */
+    border: none; /* Removes border */
 }
 
+/* Styling for search input focus state */
 #search-input:focus {
-    outline: none;
+    outline: none; /* Removes outline */
 }
 
+/* Styling for search button */
 #search-box button {
-    padding: 2%;
-    background-color: #b79140;
-    color: white;
-    border: none;
-    cursor: pointer;
+    padding: 2%; /* Adds padding */
+    background-color: #b79140; /* Sets background color to gold */
+    color: white; /* Sets text color to white */
+    border: none; /* Removes border */
+    cursor: pointer; /* Changes cursor to pointer */
 }
 
+/* Styling for search button hover effect */
 #search-box button:hover {
-    background-color: #6e5629;
+    background-color: #6e5629; /* Sets background color to darker gold on hover */
 }
 
+/* Styling for search suggestions */
 .suggestions {
-    width: 75%;
-    margin-left: 12%;
-    display: none;
-    position: absolute;
-    top: 100%;
-    border-radius: 10px;
-    background: #ffffff;
-    z-index: 1000;
-    overflow-y: auto;
-    max-height: 300px;
+    width: 75%; /* Sets width to 75% */
+    margin-left: 12%; /* Sets left margin to 12% */
+    display: none; /* Hides suggestions by default */
+    position: absolute; /* Sets position to absolute */
+    top: 100%; /* Positions below search box */
+    border-radius: 10px; /* Rounds corners with a radius of 10 pixels */
+    background: #ffffff; /* Sets background color to white */
+    z-index: 1000; /* Sets z-index to ensure it appears on top */
+    overflow-y: auto; /* Allows vertical scrolling */
+    max-height: 300px; /* Sets maximum height */
 }
 
+/* Styling for suggestion items */
 .suggestion-item {
-    display: flex;
-    align-items: center;
-    padding: 10px;
-    border-bottom: 2px solid #ddd;
-    cursor: pointer;
+    display: flex; /* Uses flexbox layout */
+    align-items: center; /* Aligns items vertically */
+    padding: 10px; /* Adds padding */
+    border-bottom: 2px solid #ddd; /* Adds bottom border */
+    cursor: pointer; /* Changes cursor to pointer */
 }
 
+/* Styling for suggestion item image */
 .suggestion-item img {
-    flex-shrink: 0;
-    width: 50px;
-    height: 50px;
-    border-radius: 100%;
-    margin-right: 10px;
+    flex-shrink: 0; /* Prevents image from shrinking */
+    width: 50px; /* Sets width to 50 pixels */
+    height: 50px; /* Sets height to 50 pixels */
+    border-radius: 100%; /* Rounds image to a circle */
+    margin-right: 10px; /* Sets right margin to 10 pixels */
 }
 
+/* Styling for artist name */
 .name-artist {
-    flex-grow: 1;
-    display: block;
-    margin-top: 0;
-    font-weight: bold;
-    border-bottom: 1px solid #102d44;
-    padding-bottom: 5%;
-    background-color: #FFF;
-    color: #b7913e;
-    text-align: center;
+    flex-grow: 1; /* Allows item to grow */
+    display: block; /* Displays as a block element */
+    margin-top: 0; /* Sets top margin to 0 */
+    font-weight: bold; /* Sets font weight to bold */
+    border-bottom: 1px solid #102d44; /* Adds bottom border */
+    padding-bottom: 5%; /* Adds bottom padding */
+    background-color: #FFF; /* Sets background color to white */
+    color: #b7913e; /* Sets text color to gold */
+    text-align: center; /* Centers text */
 }

@@ -2,48 +2,63 @@
 <html lang="fr">
 
 <head>
+    <!-- Meta charset declaration -->
     <meta charset="UTF-8">
+    <!-- Title of the webpage -->
     <title>Sinfonia</title>
+    <!-- Link to the website's favicon -->
     <link rel="icon" href="../resourcesWeb/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="../css/shazamPage.css">
+    <!-- Link to the CSS file for header styling -->
     <link rel="stylesheet" href="../css/header.css">
+    <!-- Link to the CSS file for shazamPage styling -->
+    <link rel="stylesheet" href="../css/shazamPage.css">
+    <!-- Script source for search bar functionality -->
     <script src="../js/searchBar.js"></script>
+    <!-- Meta tag for responsive viewport -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
 
 <header>
+    <!-- Link to the homepage with logo image -->
     <a href="index.html" id="logo-link">
         <img src="../resourcesWeb/logo.png" alt="Logo Sinfonia" id="logo">
     </a>
+    <!-- Search box with form for searching -->
     <div id="search-box" class="search-box">
         <form action="/searchPage" method="GET" class="search-form">
             <label>
+                <!-- Input field for search query -->
                 <input type="text" id="search-input" required name="query" class="search-input" onkeyup="searchInfos()" placeholder="Rechercher...">
+                <!-- Submit button for search -->
                 <button type="submit" class="search-button">Rechercher</button>
             </label>
         </form>
+        <!-- Suggestions dropdown for search -->
         <div id="suggestions" class="suggestions"></div>
     </div>
+    <!-- Navigation menu -->
     <nav>
         <ul>
+            <!-- Navigation links -->
             <a href="index.html">Accueil</a>
             <a href="gallery.html">Galerie</a>
             <a href="shazamPage.html">Shazam</a>
-            <a href="#">Bouton 4</a>
         </ul>
     </nav>
 </header>
 
 <div id="research">
-
-
+    <!-- Heading for research section -->
     <h2>Trouvez un artiste ou une musique grâce à son nom ou ses paroles</h2>
 
+    <!-- Form for Shazam search -->
     <form action="/shazamResults" method="GET" class="shazamSearch">
         <label>
-            <input type="text" required id="shazam-input" name="query" placeholder="Rechercher...">
+            <!-- Input field for Shazam search query -->
+            <input type="text" autofocus="autofocus" required id="shazam-input" name="query" placeholder="Rechercher...">
+            <!-- Submit button for Shazam search -->
             <button type="submit" id="shazam-search-button">Rechercher</button>
         </label>
     </form>
