@@ -5,7 +5,9 @@ import (
 	"encoding/json"
 	"fmt"
 	"html/template"
+	"log"
 	"net/http"
+	"os"
 	"path/filepath"
 	"strconv"
 	"time"
@@ -17,6 +19,21 @@ var formatted = "02/01/2006 15:04:05"
 
 // Server starts the HTTP server.
 func Server() {
+	// Open log file
+	logFile, err := os.OpenFile("server.log", os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0666)
+	if err != nil {
+		log.Fatal("Erreur lors de l'ouverture du fichier de log:", err)
+	}
+	defer func(logFile *os.File) {
+		err1 := logFile.Close()
+		if err1 != nil {
+
+		}
+	}(logFile)
+
+	log.SetOutput(logFile)
+	log.SetFlags(0)
+
 	// Clear terminal screen
 	utils.ClearTerminal()
 
@@ -34,6 +51,7 @@ func Server() {
 			}
 
 			fmt.Print("Accueil // (Date : ", time.Now().Format(formatted), ") (IP : ", ip, ")\n\n")
+			log.Print("Accueil // (Date : ", time.Now().Format(formatted), ") (IP : ", ip, ")\n\n")
 
 			//No cache for logs
 			writer.Header().Set("Cache-Control", "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0")
@@ -55,6 +73,7 @@ func Server() {
 		}
 
 		fmt.Print("Galerie // (Date : ", time.Now().Format(formatted), ") (IP : ", ip, ")\n\n")
+		log.Print("Galerie // (Date : ", time.Now().Format(formatted), ") (IP : ", ip, ")\n\n")
 
 		//No cache for logs
 		writer.Header().Set("Cache-Control", "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0")
@@ -63,8 +82,8 @@ func Server() {
 		//No cache for logs
 
 		tmpl := template.Must(template.ParseFiles(filepath.Join(webDir, "html", "gallery.html")))
-		err := tmpl.Execute(writer, fullArtists)
-		if err != nil {
+		err2 := tmpl.Execute(writer, fullArtists)
+		if err2 != nil {
 			return
 		}
 	})
@@ -86,6 +105,7 @@ func Server() {
 		}
 
 		fmt.Print("Artist : '", artist.Name, "' // (Date : ", time.Now().Format(formatted), ") (IP : ", ip, ")\n\n")
+		log.Print("Artist : '", artist.Name, "' // (Date : ", time.Now().Format(formatted), ") (IP : ", ip, ")\n\n")
 
 		//No cache for logs
 		writer.Header().Set("Cache-Control", "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0")
@@ -94,7 +114,7 @@ func Server() {
 		//No cache for logs
 
 		tmpl := template.Must(template.ParseFiles(filepath.Join(webDir, "html", "artists.html")))
-		if err1 := tmpl.Execute(writer, artist); err1 != nil {
+		if err3 := tmpl.Execute(writer, artist); err3 != nil {
 			http.Error(writer, "Failed to render artist details", http.StatusInternalServerError)
 		}
 	})
@@ -107,6 +127,7 @@ func Server() {
 		}
 
 		fmt.Print("Shazam // (Date : ", time.Now().Format(formatted), ") (IP : ", ip, ")\n\n")
+		log.Print("Shazam // (Date : ", time.Now().Format(formatted), ") (IP : ", ip, ")\n\n")
 
 		//No cache for logs
 		writer.Header().Set("Cache-Control", "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0")
@@ -125,6 +146,7 @@ func Server() {
 		}
 
 		fmt.Print("Page Résultats Shazam // (Date : ", time.Now().Format(formatted), ") (IP : ", ip, ")\n")
+		log.Print("Page Résultats Shazam // (Date : ", time.Now().Format(formatted), ") (IP : ", ip, ")\n")
 
 		//No cache for logs
 		writer.Header().Set("Cache-Control", "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0")
@@ -145,6 +167,8 @@ func Server() {
 
 		fmt.Print("Page Résultats Recherche // (Date : ", time.Now().Format(formatted), ") (IP : ", ip, ")\n")
 		fmt.Print("Recherche : '", queryValue, "' // (Date : ", time.Now().Format(formatted), ") (IP : ", ip, ")\n\n")
+		log.Print("Page Résultats Recherche // (Date : ", time.Now().Format(formatted), ") (IP : ", ip, ")\n")
+		log.Print("Recherche : '", queryValue, "' // (Date : ", time.Now().Format(formatted), ") (IP : ", ip, ")\n\n")
 
 		//No cache for logs
 		writer.Header().Set("Cache-Control", "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0")
@@ -153,8 +177,8 @@ func Server() {
 		//No cache for logs
 
 		tmpl := template.Must(template.ParseFiles(filepath.Join(webDir, "html", "searchPage.html")))
-		err2 := tmpl.Execute(writer, map[string]string{"QueryValue": queryValue})
-		if err2 != nil {
+		err4 := tmpl.Execute(writer, map[string]string{"QueryValue": queryValue})
+		if err4 != nil {
 			return
 		}
 	})
@@ -169,12 +193,13 @@ func Server() {
 		}
 
 		fmt.Print("Recherche Shazam : ", shazamInput, " // (Date : ", time.Now().Format(formatted), ") (IP : ", ip, ")\n\n")
+		log.Print("Recherche Shazam : ", shazamInput, " // (Date : ", time.Now().Format(formatted), ") (IP : ", ip, ")\n\n")
 
 		shazamData := utils.FetchShazam(shazamInput)
 
 		writer.Header().Set("Content-Type", "application/json")
-		_, err3 := writer.Write(shazamData)
-		if err3 != nil {
+		_, err5 := writer.Write(shazamData)
+		if err5 != nil {
 			return
 		}
 	})
@@ -194,8 +219,8 @@ func Server() {
 		deezerID := utils.FetchDeezer(artistName)
 
 		writer.Header().Set("Content-Type", "application/json")
-		_, err4 := writer.Write([]byte(deezerID))
-		if err4 != nil {
+		_, err6 := writer.Write([]byte(deezerID))
+		if err6 != nil {
 			return
 		}
 	})
@@ -205,8 +230,8 @@ func Server() {
 		jsonData := utils.FetchLocations(fullArtists)
 
 		writer.Header().Set("Content-Type", "application/json")
-		_, err5 := writer.Write(jsonData)
-		if err5 != nil {
+		_, err7 := writer.Write(jsonData)
+		if err7 != nil {
 			return
 		}
 	})
