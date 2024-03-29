@@ -8,10 +8,12 @@ import (
 	"net/http"
 	"path/filepath"
 	"strconv"
+	"time"
 )
 
 // fullArtists holds the list of all artists fetched from the API.
 var fullArtists = utils.FetchArtists()
+var formatted = "02/01/2006 15:04:05"
 
 // Server starts the HTTP server.
 func Server() {
@@ -25,6 +27,20 @@ func Server() {
 	// Handle root endpoint
 	http.HandleFunc("/", func(writer http.ResponseWriter, request *http.Request) {
 		if request.URL.Path == "/" {
+
+			ip := request.Header.Get("X-Forwarded-For")
+			if ip == "" {
+				ip = request.RemoteAddr
+			}
+
+			fmt.Print("Accueil // (Date : ", time.Now().Format(formatted), ") (IP : ", ip, ")\n\n")
+
+			//No cache for logs
+			writer.Header().Set("Cache-Control", "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0")
+			writer.Header().Set("Pragma", "no-cache")
+			writer.Header().Set("Expires", "0")
+			//No cache for logs
+
 			http.ServeFile(writer, request, filepath.Join(webDir, "html", "index.html"))
 		} else {
 			fileServer.ServeHTTP(writer, request)
@@ -33,6 +49,19 @@ func Server() {
 
 	// Handle gallery endpoint
 	http.HandleFunc("/gallery.html", func(writer http.ResponseWriter, request *http.Request) {
+		ip := request.Header.Get("X-Forwarded-For")
+		if ip == "" {
+			ip = request.RemoteAddr
+		}
+
+		fmt.Print("Galerie // (Date : ", time.Now().Format(formatted), ") (IP : ", ip, ")\n\n")
+
+		//No cache for logs
+		writer.Header().Set("Cache-Control", "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0")
+		writer.Header().Set("Pragma", "no-cache")
+		writer.Header().Set("Expires", "0")
+		//No cache for logs
+
 		tmpl := template.Must(template.ParseFiles(filepath.Join(webDir, "html", "gallery.html")))
 		err := tmpl.Execute(writer, fullArtists)
 		if err != nil {
@@ -51,6 +80,19 @@ func Server() {
 			}
 		}
 
+		ip := request.Header.Get("X-Forwarded-For")
+		if ip == "" {
+			ip = request.RemoteAddr
+		}
+
+		fmt.Print("Artist : '", artist.Name, "' // (Date : ", time.Now().Format(formatted), ") (IP : ", ip, ")\n\n")
+
+		//No cache for logs
+		writer.Header().Set("Cache-Control", "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0")
+		writer.Header().Set("Pragma", "no-cache")
+		writer.Header().Set("Expires", "0")
+		//No cache for logs
+
 		tmpl := template.Must(template.ParseFiles(filepath.Join(webDir, "html", "artists.html")))
 		if err1 := tmpl.Execute(writer, artist); err1 != nil {
 			http.Error(writer, "Failed to render artist details", http.StatusInternalServerError)
@@ -59,17 +101,56 @@ func Server() {
 
 	// Handle shazamPage endpoint
 	http.HandleFunc("/shazamPage.html", func(writer http.ResponseWriter, request *http.Request) {
+		ip := request.Header.Get("X-Forwarded-For")
+		if ip == "" {
+			ip = request.RemoteAddr
+		}
+
+		fmt.Print("Shazam // (Date : ", time.Now().Format(formatted), ") (IP : ", ip, ")\n\n")
+
+		//No cache for logs
+		writer.Header().Set("Cache-Control", "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0")
+		writer.Header().Set("Pragma", "no-cache")
+		writer.Header().Set("Expires", "0")
+		//No cache for logs
+
 		http.ServeFile(writer, request, filepath.Join(webDir, "html", "shazamPage.html"))
 	})
 
 	// Handle shazamResults endpoint
 	http.HandleFunc("/shazamResults", func(writer http.ResponseWriter, request *http.Request) {
+		ip := request.Header.Get("X-Forwarded-For")
+		if ip == "" {
+			ip = request.RemoteAddr
+		}
+
+		fmt.Print("Page Résultats Shazam // (Date : ", time.Now().Format(formatted), ") (IP : ", ip, ")\n")
+
+		//No cache for logs
+		writer.Header().Set("Cache-Control", "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0")
+		writer.Header().Set("Pragma", "no-cache")
+		writer.Header().Set("Expires", "0")
+		//No cache for logs
+
 		http.ServeFile(writer, request, filepath.Join(webDir, "html", "shazamResults.html"))
 	})
 
 	// Handle searchPage endpoint
 	http.HandleFunc("/searchPage", func(writer http.ResponseWriter, request *http.Request) {
 		queryValue := request.URL.Query().Get("query")
+		ip := request.Header.Get("X-Forwarded-For")
+		if ip == "" {
+			ip = request.RemoteAddr
+		}
+
+		fmt.Print("Page Résultats Recherche // (Date : ", time.Now().Format(formatted), ") (IP : ", ip, ")\n")
+		fmt.Print("Recherche : '", queryValue, "' // (Date : ", time.Now().Format(formatted), ") (IP : ", ip, ")\n\n")
+
+		//No cache for logs
+		writer.Header().Set("Cache-Control", "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0")
+		writer.Header().Set("Pragma", "no-cache")
+		writer.Header().Set("Expires", "0")
+		//No cache for logs
 
 		tmpl := template.Must(template.ParseFiles(filepath.Join(webDir, "html", "searchPage.html")))
 		err2 := tmpl.Execute(writer, map[string]string{"QueryValue": queryValue})
@@ -81,6 +162,14 @@ func Server() {
 	// Handle shazam API endpoint
 	http.HandleFunc("/api/shazam", func(writer http.ResponseWriter, request *http.Request) {
 		shazamInput := request.URL.Query().Get("query")
+
+		ip := request.Header.Get("X-Forwarded-For")
+		if ip == "" {
+			ip = request.RemoteAddr
+		}
+
+		fmt.Print("Recherche Shazam : ", shazamInput, " // (Date : ", time.Now().Format(formatted), ") (IP : ", ip, ")\n\n")
+
 		shazamData := utils.FetchShazam(shazamInput)
 
 		writer.Header().Set("Content-Type", "application/json")
