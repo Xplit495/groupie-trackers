@@ -59,5 +59,6 @@ Else go to : ```http://localhost:8080/```
 ## Authors
 
 - Carrola Quentin
+- Malagouen Shemsedine
 
 
