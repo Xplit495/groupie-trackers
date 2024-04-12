@@ -1,7 +1,11 @@
 
 # Groupie-Trackers
 
-Groupie-Trackers is a project aimed at training individuals to use APIs.
+## About
+
+Groupie Trackers is a web application that leverages a rich API to provide detailed insights into bands and their 
+groupies. Utilizing a robust tech stack including Golang for the backend and HTML, CSS, JavaScript for the frontend, 
+this application offers users an engaging experience to explore data on their favorite bands.
 
 
 ## Appendix
@@ -55,9 +59,5 @@ Else go to : ```http://localhost:8080/```
 ## Authors
 
 - Carrola Quentin
-- Malagouen Shemsedine
 
-## Gitea
-
-- https://ytrack.learn.ynov.com/git/carquentin/GroupieTrackers
 
